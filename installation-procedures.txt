@@ -1,0 +1,10 @@
+conda create --name praktikum python==3.9.*
+
+conda activate praktikum
+
+pip3 install torch==1.13.0 torchvision torchaudio --extra-index-url https://download.pytorch.org/whl/cu117
+
+pip install torch-scatter torch-sparse torch-cluster torch-spline-conv torch-geometric -f https://data.pyg.org/whl/torch-1.13.0+cu117.html
+
+pip install numpy pandas rdkit scikit-learn
+
