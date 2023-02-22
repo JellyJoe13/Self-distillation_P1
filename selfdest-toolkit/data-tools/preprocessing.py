@@ -102,12 +102,13 @@ def experiment_preprocess(
             index=False
         )
 
-    # check if smiles string file is present or else write list of all smiles strings to file
+    # check if smiles mapping file is present or else write list of all smiles strings with its cid to file
     filename_smiles = "smiles.npy"
     if not os.path.isfile(path_data + filename_smiles):
+        smiles_map = df[['cid', 'smiles']].sort_values(by=['cid']).drop_duplicates(subset=['cid']).to_numpy()
         np.save(
             path_data + filename_smiles,
-            np.unique(df.smiles.to_numpy())
+            smiles_map
         )
 
     # return experiment ids
