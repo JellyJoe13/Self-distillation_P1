@@ -90,3 +90,54 @@ def load_chem_desc_data(
 
     # return data and labels
     return data, labels
+
+
+def load_fingerprint_data(
+        aid: int,
+        path_data: str = "data/"
+) -> typing.Tuple[np.ndarray, np.ndarray]:
+    """
+    Function that loads the Morgan Fingerprint dataset for the provided experiment (id). Also cleans the data of
+    repetitive or unnecessary data.
+
+    Parameters
+    ----------
+    aid : int
+        Experiment id for which the data is to be fetched
+    path_data : str, optional
+        Path to data folder
+
+    Returns
+    -------
+    np.ndarray
+        chemical descriptor data
+    np.ndarray
+        labels of the data (0 for inactive, 1 for active)
+    """
+
+    # load the pure data
+    loaded_data = load_pure_data(
+        aid_to_load=aid,
+        path_data=path_data
+    )
+
+    # load pure chemical descriptor data
+    fingerprint_map = np.load(path_data + "fingerprints_map.npy")
+    fingerprint_data = np.load(path_data + "fingerprints_data.npy")
+
+    # cleanup of data - data may contain rows with always the same value, only 0s, etc.
+    fingerprint_data = clean_numpy_data(fingerprint_data)
+
+    # map the cids to numpy array to get the temporary data
+    data = np.stack(
+        loaded_data.cid.map(
+            lambda x:
+            fingerprint_data[fingerprint_map == x][0]
+        ).to_numpy()
+    )
+
+    # fetch the labels of the data elements:
+    labels = loaded_data.activity.map(lambda x: int(x == "active")).to_numpy()
+
+    # return data and labels
+    return data, labels
