@@ -238,6 +238,6 @@ def preload_fingerprint_data_all(
 
     # iterate over list of aids
     for aid in tqdm(aid_list):
-        preload_fingerprint_data_all(aid, path_data)
+        load_fingerprint_data(aid, path_data)
 
     return
