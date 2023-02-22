@@ -1,5 +1,5 @@
 import typing
-
+from tqdm import tqdm
 import pandas as pd
 import os
 import numpy as np
@@ -90,8 +90,8 @@ def load_chem_desc_data(
     )
 
     # load pure chemical descriptor data
-    chem_data_map = np.load(path_data + "chem-desc_map.npy")
-    chem_data_data = np.load(path_data + "chem-desc_data.npy")
+    chem_data_map = np.load(path_data + "chem-desc_map.npy").astype(int)
+    chem_data_data = np.load(path_data + "chem-desc_data.npy").astype(float)
 
     # cleanup of data - data may contain rows with always the same value, only 0s, etc.
     chem_data_data = clean_numpy_data(chem_data_data)
@@ -165,7 +165,7 @@ def load_fingerprint_data(
 
     # load pure chemical descriptor data
     fingerprint_map = np.load(path_data + "fingerprints_map.npy")
-    fingerprint_data = np.load(path_data + "fingerprints_data.npy")
+    fingerprint_data = np.load(path_data + "fingerprints_data.npy").astype(int)
 
     # cleanup of data - data may contain rows with always the same value, only 0s, etc.
     fingerprint_data = clean_numpy_data(fingerprint_data)
@@ -210,7 +210,7 @@ def preload_chem_data_all(
     """
 
     # iterate over list of aids
-    for aid in aid_list:
+    for aid in tqdm(aid_list):
         load_chem_desc_data(aid, path_data)
 
     return
@@ -237,7 +237,7 @@ def preload_fingerprint_data_all(
     """
 
     # iterate over list of aids
-    for aid in aid_list:
+    for aid in tqdm(aid_list):
         load_chem_desc_data(aid, path_data)
 
     return

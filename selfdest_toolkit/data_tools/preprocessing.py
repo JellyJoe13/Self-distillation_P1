@@ -214,8 +214,8 @@ def generate_fingerprints(
             storage[idx, :] = RDKFingerprint(MolFromSmiles(row.smiles))
 
         # save resulting data into files
-        np.save(fingerprint_data_path["map"], df.cid.to_numpy())
-        np.save(fingerprint_data_path["data"], storage)
+        np.save(fingerprint_data_path["map"], df.cid.to_numpy().astype(int))
+        np.save(fingerprint_data_path["data"], storage.astype(bool))
 
     else:
         print("Fingerprints already generated")
