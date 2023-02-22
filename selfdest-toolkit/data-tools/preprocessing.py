@@ -121,7 +121,7 @@ def generate_chem_smiles(
     """
     Function that if not already computed loads the dataset, identifies all unique molecules and generates chemical
     descriptor data for them using the Descriptors from rdkit from descList. The result data is written to a numpy
-    file containing the data and a mapping file which maps entries from the data file to  their actual molecule id(cid).
+    file containing the data and a mapping file which maps entries from the data file to their actual molecule id(cid).
 
     Parameters
     ----------
@@ -134,6 +134,7 @@ def generate_chem_smiles(
     -------
     Nothing
     """
+
     # create saving paths
     chem_data_path = {
         "map": path_data + "chem-desc_map.npy",
@@ -163,5 +164,59 @@ def generate_chem_smiles(
 
     else:
         print("Chemical descriptor data already generated")
+
+    return
+
+
+def generate_fingerprints(
+        path_main_dataset: str = "data/df_assay_entries.csv",
+        path_data: str = "data/"
+) -> None:
+    """
+    Function that if not already computed loads the dataset, identifies all unique molecules and generates the Morgan
+    Fingerprint for them using the rdkit. The result data is written to a numpy file containing the data and a mapping
+    file which maps entries from the data file to their actual molecule id(cid).
+
+    Parameters
+    ----------
+    path_main_dataset : str, optional
+        Path to main dataset.
+    path_data : str, optional
+        Path to data folder.
+
+    Returns
+    -------
+    Nothing
+    """
+
+    # create saving paths
+    fingerprint_data_path = {
+        "map": path_data + "fingerprints_map.npy",
+        "data": path_data + "fingerprints_data.npy"
+    }
+
+    # check if data already exists
+    if (not os.path.isfile(fingerprint_data_path["map"])) and (not os.path.isfile(fingerprint_data_path["data"])):
+        print("Generating fingerprints")
+
+        # load dataframe
+        df = pd.read_csv(path_main_dataset)
+
+        # select subset of dataframe
+        df = df[['cid', 'smiles']].sort_values(by=['cid']).drop_duplicates(subset=['cid']).reset_index()
+
+        # pre-allocate storage to put data into
+        storage = np.zeros((len(df), 2048))
+
+        # iterate over rows of dataset
+        for idx, row in tqdm(df.iterrows()):
+            storage[idx, :] = RDKFingerprint(MolFromSmiles(row.smiles))
+
+        # save resulting data into files
+        np.save(fingerprint_data_path["map"], df.cid.to_numpy())
+        np.save(fingerprint_data_path["data"], storage)
+
+    else:
+        print("Fingerprints already generated")
 
     return
