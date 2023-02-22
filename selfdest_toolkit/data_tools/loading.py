@@ -48,6 +48,7 @@ def load_chem_desc_data(
     """
     Function that loads the chemical descriptor dataset for the provided experiment (id). Also cleans the data of
     repetitive or unnecessary data.
+    Addition: due to timing reasons the precomputed results will be saved and loaded if possible.
 
     Parameters
     ----------
@@ -64,6 +65,23 @@ def load_chem_desc_data(
         labels of the data (0 for inactive, 1 for active)
     """
 
+    # PRESAVING AND FETCHING PART
+    # path where the data would be prestored
+    path_chemdata = path_data + "precomputed/chemdata/"
+
+    # check if folder present
+    if not os.path.exists(path_chemdata):
+        os.makedirs(path_chemdata)
+
+    # check if file already exists and can be loaded instead of creating it
+    file_names = {
+        "data": str(aid) + "_data.npy",
+        "label": str(aid) + "_label.npy"
+    }
+    if os.path.isfile(path_chemdata + file_names["data"]) and os.path.isfile(path_chemdata + file_names["label"]):
+        return np.load(path_chemdata + file_names["data"]), np.load(path_chemdata + file_names["label"])
+
+    # NORMAL LOADING PART
     # load pure data
     loaded_data = load_pure_data(
         aid_to_load=aid,
@@ -88,6 +106,10 @@ def load_chem_desc_data(
     # fetch the labels of the data elements:
     labels = loaded_data.activity.map(lambda x: int(x == "active")).to_numpy()
 
+    # save the generated data to disk
+    np.save(path_chemdata + file_names["data"], data)
+    np.save(path_chemdata + file_names["label"], labels)
+
     # return data and labels
     return data, labels
 
@@ -99,6 +121,7 @@ def load_fingerprint_data(
     """
     Function that loads the Morgan Fingerprint dataset for the provided experiment (id). Also cleans the data of
     repetitive or unnecessary data.
+    Addition: due to timing reasons the precomputed results will be saved and loaded if possible.
 
     Parameters
     ----------
@@ -115,6 +138,23 @@ def load_fingerprint_data(
         labels of the data (0 for inactive, 1 for active)
     """
 
+    # PRESAVING AND FETCHING PART
+    # path where the data would be prestored
+    path_fingerprint = path_data + "precomputed/fingerprint/"
+
+    # check if folder present
+    if not os.path.exists(path_fingerprint):
+        os.makedirs(path_fingerprint)
+
+    # check if file already exists and can be loaded instead of creating it
+    file_names = {
+        "data": str(aid) + "_data.npy",
+        "label": str(aid) + "_label.npy"
+    }
+    if os.path.isfile(path_fingerprint + file_names["data"]) and os.path.isfile(path_fingerprint + file_names["label"]):
+        return np.load(path_fingerprint + file_names["data"]), np.load(path_fingerprint + file_names["label"])
+
+    # NORMAL LOADING PART
     # load the pure data
     loaded_data = load_pure_data(
         aid_to_load=aid,
@@ -138,6 +178,10 @@ def load_fingerprint_data(
 
     # fetch the labels of the data elements:
     labels = loaded_data.activity.map(lambda x: int(x == "active")).to_numpy()
+
+    # save the generated data to disk
+    np.save(path_fingerprint + file_names["data"], data)
+    np.save(path_fingerprint + file_names["label"], labels)
 
     # return data and labels
     return data, labels
