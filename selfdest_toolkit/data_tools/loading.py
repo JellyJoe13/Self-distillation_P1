@@ -238,6 +238,6 @@ def preload_fingerprint_data_all(
 
     # iterate over list of aids
     for aid in tqdm(aid_list):
-        load_chem_desc_data(aid, path_data)
+        preload_fingerprint_data_all(aid, path_data)
 
     return
