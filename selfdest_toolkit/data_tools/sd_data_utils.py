@@ -19,10 +19,14 @@ def generate_self_distillation_elements(
     ----------
     aid : int
         Experiment id for which self distillation elements are to be generated
-    number_to_generate
-    path_data
-    seed
-    data_gen_method
+    number_to_generate : int
+        number of elements to fetch for self distillation
+    path_data : str, optional
+        Path to data folder
+    seed : int
+        Seed to set; by default set to 131313, if None, then no seed will be set. Seed recommended for reproducability.
+    data_gen_method : str
+        Defines which data mode is active: either 'fingerprint' or 'chem-desc' for corresponding data type.
 
     Returns
     -------
