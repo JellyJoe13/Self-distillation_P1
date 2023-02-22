@@ -79,7 +79,8 @@ def load_chem_desc_data(
         "label": str(aid) + "_label.npy"
     }
     if os.path.isfile(path_chemdata + file_names["data"]) and os.path.isfile(path_chemdata + file_names["label"]):
-        return np.load(path_chemdata + file_names["data"]), np.load(path_chemdata + file_names["label"])
+        return np.load(path_chemdata + file_names["data"]).astype(float), \
+               np.load(path_chemdata + file_names["label"]).astype(int)
 
     # NORMAL LOADING PART
     # load pure data
@@ -108,7 +109,7 @@ def load_chem_desc_data(
 
     # save the generated data to disk
     np.save(path_chemdata + file_names["data"], data)
-    np.save(path_chemdata + file_names["label"], labels)
+    np.save(path_chemdata + file_names["label"], labels.astype(int))
 
     # return data and labels
     return data, labels
@@ -152,7 +153,8 @@ def load_fingerprint_data(
         "label": str(aid) + "_label.npy"
     }
     if os.path.isfile(path_fingerprint + file_names["data"]) and os.path.isfile(path_fingerprint + file_names["label"]):
-        return np.load(path_fingerprint + file_names["data"]), np.load(path_fingerprint + file_names["label"])
+        return np.load(path_fingerprint + file_names["data"]).astype(float), \
+               np.load(path_fingerprint + file_names["label"]).astype(int)
 
     # NORMAL LOADING PART
     # load the pure data
@@ -180,8 +182,8 @@ def load_fingerprint_data(
     labels = loaded_data.activity.map(lambda x: int(x == "active")).to_numpy()
 
     # save the generated data to disk
-    np.save(path_fingerprint + file_names["data"], data)
-    np.save(path_fingerprint + file_names["label"], labels)
+    np.save(path_fingerprint + file_names["data"], data.astype(bool))
+    np.save(path_fingerprint + file_names["label"], labels.astype(int))
 
     # return data and labels
     return data, labels
