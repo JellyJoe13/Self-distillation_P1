@@ -94,18 +94,18 @@ def load_chem_desc_data(
     chem_data_data = np.load(path_data + "chem-desc_data.npy").astype(float)
 
     # cleanup of data - data may contain rows with always the same value, only 0s, etc.
-    chem_data_data = clean_numpy_data(chem_data_data)
+    # currently deactivated as it only removes 4 columns which is not worth the overhead
+    # chem_data_data = clean_numpy_data(chem_data_data)
 
-    # map the cids to numpy array to get the temporary data
-    data = np.stack(
-        loaded_data.cid.map(
-            lambda x:
-                chem_data_data[chem_data_map == x][0]
-        ).to_numpy()
-    )
+    # MAPPING OF CIDS TO DATA
+    # get cids
+    cids = loaded_data.cid.to_numpy()
+    # get positions of cids in chem-desc_map (map is already sorted by default)
+    pos = np.searchsorted(chem_data_map, cids)
+    data = chem_data_data[pos]
 
     # fetch the labels of the data elements:
-    labels = loaded_data.activity.map(lambda x: int(x == "active")).to_numpy()
+    labels = (loaded_data.activity.to_numpy() == "active").astype(int)
 
     # save the generated data to disk
     np.save(path_chemdata + file_names["data"], data)
@@ -167,19 +167,15 @@ def load_fingerprint_data(
     fingerprint_map = np.load(path_data + "fingerprints_map.npy")
     fingerprint_data = np.load(path_data + "fingerprints_data.npy").astype(int)
 
-    # cleanup of data - data may contain rows with always the same value, only 0s, etc.
-    fingerprint_data = clean_numpy_data(fingerprint_data)
-
-    # map the cids to numpy array to get the temporary data
-    data = np.stack(
-        loaded_data.cid.map(
-            lambda x:
-            fingerprint_data[fingerprint_map == x][0]
-        ).to_numpy()
-    )
+    # MAPPING CIDS TO DATA
+    # get cids
+    cids = loaded_data.cid.to_numpy()
+    # get positions of cids in fingerprint_map (fingerprint map is already sorted by default)
+    pos = np.searchsorted(fingerprint_map, cids)
+    data = fingerprint_data[pos]
 
     # fetch the labels of the data elements:
-    labels = loaded_data.activity.map(lambda x: int(x == "active")).to_numpy()
+    labels = (loaded_data.activity.to_numpy() == "active").astype(int)
 
     # save the generated data to disk
     np.save(path_fingerprint + file_names["data"], data.astype(bool))
