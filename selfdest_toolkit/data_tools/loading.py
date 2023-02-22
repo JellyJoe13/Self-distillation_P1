@@ -67,18 +67,18 @@ def load_chem_desc_data(
 
     # PRESAVING AND FETCHING PART
     # path where the data would be prestored
-    #path_chemdata = path_data + "precomputed/chemdata/"
+    # path_chemdata = path_data + "precomputed/chemdata/"
 
     # check if folder present
-    #if not os.path.exists(path_chemdata):
+    # if not os.path.exists(path_chemdata):
     #    os.makedirs(path_chemdata)
 
     # check if file already exists and can be loaded instead of creating it
-    #file_names = {
+    # file_names = {
     #    "data": str(aid) + "_data.npy",
     #    "label": str(aid) + "_label.npy"
-    #}
-    #if os.path.isfile(path_chemdata + file_names["data"]) and os.path.isfile(path_chemdata + file_names["label"]):
+    # }
+    # if os.path.isfile(path_chemdata + file_names["data"]) and os.path.isfile(path_chemdata + file_names["label"]):
     #    return np.load(path_chemdata + file_names["data"]).astype(float), \
     #           np.load(path_chemdata + file_names["label"]).astype(int)
 
@@ -108,8 +108,8 @@ def load_chem_desc_data(
     labels = (loaded_data.activity.to_numpy() == "active").astype(int)
 
     # save the generated data to disk
-    #np.save(path_chemdata + file_names["data"], data)
-    #np.save(path_chemdata + file_names["label"], labels.astype(int))
+    # np.save(path_chemdata + file_names["data"], data)
+    # np.save(path_chemdata + file_names["label"], labels.astype(int))
 
     # return data and labels
     return data, labels
@@ -144,15 +144,15 @@ def load_fingerprint_data(
     # path_fingerprint = path_data + "precomputed/fingerprint/"
 
     # check if folder present
-    #if not os.path.exists(path_fingerprint):
+    # if not os.path.exists(path_fingerprint):
     #    os.makedirs(path_fingerprint)
 
     # check if file already exists and can be loaded instead of creating it
-    #file_names = {
+    # file_names = {
     #    "data": str(aid) + "_data.npy",
     #    "label": str(aid) + "_label.npy"
-    #}
-    #if os.path.isfile(path_fingerprint + file_names["data"]) and os.path.isfile(path_fingerprint + file_names["label"]):
+    # }
+    # if os.path.isfile(path_fingerprint + file_names["data"]) and os.path.isfile(path_fingerprint + file_names["label"]):
     #    return np.load(path_fingerprint + file_names["data"]).astype(float), \
     #           np.load(path_fingerprint + file_names["label"]).astype(int)
 
@@ -178,8 +178,8 @@ def load_fingerprint_data(
     labels = (loaded_data.activity.to_numpy() == "active").astype(int)
 
     # save the generated data to disk
-    #np.save(path_fingerprint + file_names["data"], data.astype(bool))
-    #np.save(path_fingerprint + file_names["label"], labels.astype(int))
+    # np.save(path_fingerprint + file_names["data"], data.astype(bool))
+    # np.save(path_fingerprint + file_names["label"], labels.astype(int))
 
     # return data and labels
     return data, labels
