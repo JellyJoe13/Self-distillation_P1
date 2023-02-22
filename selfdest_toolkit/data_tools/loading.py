@@ -1,5 +1,9 @@
+import typing
+
 import pandas as pd
 import os
+import numpy as np
+from selfdest_toolkit.data_tools.cleaning import clean_numpy_data
 
 
 def load_pure_data(
@@ -35,3 +39,54 @@ def load_pure_data(
 
     # load and return data
     return pd.read_csv(file_path)
+
+
+def load_chem_desc_data(
+        aid: int,
+        path_data: str = "data/"
+) -> typing.Tuple[np.ndarray, np.ndarray]:
+    """
+    Function that loads the chemical descriptor dataset for the provided experiment (id). Also cleans the data of
+    repetitive or unnecessary data.
+
+    Parameters
+    ----------
+    aid : int
+        Experiment id for which the data is to be fetched
+    path_data : str, optional
+        Path to data folder
+
+    Returns
+    -------
+    np.ndarray
+        chemical descriptor data
+    np.ndarray
+        labels of the data (0 for inactive, 1 for active)
+    """
+
+    # load pure data
+    loaded_data = load_pure_data(
+        aid_to_load=aid,
+        path_data=path_data
+    )
+
+    # load pure chemical descriptor data
+    chem_data_map = np.load(path_data + "chem-desc_map.npy")
+    chem_data_data = np.load(path_data + "chem-desc_data.npy")
+
+    # cleanup of data - data may contain rows with always the same value, only 0s, etc.
+    chem_data_data = clean_numpy_data(chem_data_data)
+
+    # map the cids to numpy array to get the temporary data
+    data = np.stack(
+        loaded_data.cid.map(
+            lambda x:
+                chem_data_data[chem_data_map == x][0]
+        ).to_numpy()
+    )
+
+    # fetch the labels of the data elements:
+    labels = loaded_data.activity.map(lambda x: int(x == "active")).to_numpy()
+
+    # return data and labels
+    return data, labels
