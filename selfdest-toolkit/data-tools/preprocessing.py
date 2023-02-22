@@ -220,3 +220,39 @@ def generate_fingerprints(
         print("Fingerprints already generated")
 
     return
+
+
+def experiment_whole_preprocess(
+        path_main_dataset: str = "data/df_assay_entries.csv",
+        path_data: str = "data/"
+) -> np.ndarray:
+    """
+    Function that calls all subfunctions related to dataset loading and preprocessing in a manner that allows the
+    interpreter to use at least memory as possible but possibly incurring multiple loadings of the dataset from disk.
+
+    Parameters
+    ----------
+    path_main_dataset : str, optional
+        Path to main dataset.
+    path_data : str, optional
+        Path to data folder.
+
+    Returns
+    -------
+    np.ndarray
+        Numpy array of unique assay ids (aid) = experiment identifiers
+    """
+
+    # check if dataset is downloaded
+    check_data_file(path_main_dataset)
+
+    # execute normal split preprocessing
+    aids = experiment_preprocess(path_main_dataset, path_data)
+
+    # generate the chemical descriptor data
+    generate_chem_smiles(path_main_dataset, path_data)
+
+    # generate the fingerprint data
+    generate_fingerprints(path_main_dataset, path_data)
+
+    return aids
