@@ -187,3 +187,57 @@ def load_fingerprint_data(
 
     # return data and labels
     return data, labels
+
+
+def preload_chem_data_all(
+        aid_list: np.ndarray,
+        path_data: str = "data/"
+) -> None:
+    """
+    Function preloads all the chemical descriptor data and makes sure it is written to disk beforehand to speed up
+    further computation.
+
+    Parameters
+    ----------
+    aid_list : np.ndarray
+        list of experiment ids to preload
+    path_data : str, optional
+        path of data folder
+
+    Returns
+    -------
+    Nothing
+    """
+
+    # iterate over list of aids
+    for aid in aid_list:
+        load_chem_desc_data(aid, path_data)
+
+    return
+
+
+def preload_fingerprint_data_all(
+        aid_list: np.ndarray,
+        path_data: str = "data/"
+) -> None:
+    """
+    Function preloads all the fingerprint data and makes sure it is written to disk beforehand to speed up further
+    computation.
+
+    Parameters
+    ----------
+    aid_list : np.ndarray
+        list of experiment ids to preload
+    path_data : str, optional
+        path of data folder
+
+    Returns
+    -------
+    Nothing
+    """
+
+    # iterate over list of aids
+    for aid in aid_list:
+        load_chem_desc_data(aid, path_data)
+
+    return
