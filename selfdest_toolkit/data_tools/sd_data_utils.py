@@ -1,3 +1,5 @@
+import typing
+
 import numpy as np
 from selfdest_toolkit.data_tools.loading import load_pure_data
 
@@ -76,3 +78,19 @@ def generate_self_distillation_elements(
     molecule_data = data[pos]
 
     return molecule_data
+
+
+def merge_data_self_dist_data(
+        data: np.ndarray,
+        sd_data: np.ndarray,
+        label: np.ndarray,
+        sd_label: np.ndarray
+) -> typing.Tuple[np.ndarray, np.ndarray]:
+
+    # fuze data
+    new_data = np.vstack([data, sd_data])
+
+    # fuze labels
+    new_labels = np.concatenate([label, sd_label])
+
+    return new_data, new_labels
