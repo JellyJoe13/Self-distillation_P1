@@ -59,7 +59,7 @@ def execute_sd_rf_test(
     sd_data = sd_data_utils.generate_self_distillation_elements(
         aid=aid,
         number_to_generate=number_sd,
-        data_gen_method="chem-desc"
+        data_gen_method=mode
     )
 
     # scale and clean data
