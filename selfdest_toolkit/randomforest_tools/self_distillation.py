@@ -6,7 +6,7 @@ from tqdm import tqdm
 from selfdest_toolkit.data_tools import cleaning, sd_data_utils, loading
 
 
-def execute_normal_rf_test(
+def execute_sd_rf_test(
         rf_teacher: RandomForestClassifier,
         rf_student: RandomForestClassifier,
         aid: int,
