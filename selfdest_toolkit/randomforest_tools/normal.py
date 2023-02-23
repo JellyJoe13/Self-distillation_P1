@@ -82,13 +82,13 @@ def execute_normal_rf_test(
             balanced_accuracy_score(y_test, pred)
         )
         accuracy_storage["roc"].append(
-            roc_auc_score(y_test, pred)
+            roc_auc_score(y_test, pred, average="weighted")
         )
         accuracy_storage["precision"].append(
-            precision_score(y_test, pred)
+            precision_score(y_test, pred, average="weighted")
         )
         accuracy_storage["recall"].append(
-            recall_score(y_test, pred)
+            recall_score(y_test, pred, average="weighted")
         )
 
-        return accuracy_storage
+    return accuracy_storage
