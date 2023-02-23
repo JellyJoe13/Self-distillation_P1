@@ -135,4 +135,6 @@ def get_good_experiment_ids(
         np.random.seed(random_seed)
 
         # sample random items from list
-        return np.random.choice(np.array(good_aid), replace=False, size=number_to_sample)
+        ret = np.random.choice(np.array(good_aid), replace=False, size=number_to_sample)
+        ret.sort()
+        return ret
