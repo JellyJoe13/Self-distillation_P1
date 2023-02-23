@@ -20,5 +20,6 @@ def generate_default_rf(
     # generate default RandomForest and return it
     return RandomForestClassifier(
         class_weight="balanced",
-        random_state=random_state
+        random_state=random_state,
+        n_jobs=-1
     )

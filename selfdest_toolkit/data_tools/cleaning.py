@@ -78,7 +78,7 @@ def rf_scale_clean_data(
         data = scaler.fit_transform(data)
 
         # return data
-        return data
+        return np.nan_to_num(data)
 
     else:
         # fuze data
@@ -100,5 +100,5 @@ def rf_scale_clean_data(
         self_dest_data = temp_fuze[data.shape[0]:]
 
         # return data and self dest data
-        return data, self_dest_data
+        return np.nan_to_num(data), np.nan_to_num(self_dest_data)
 
