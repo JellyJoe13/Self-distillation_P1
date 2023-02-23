@@ -11,7 +11,8 @@ def execute_sd_rf_test(
         rf_student: RandomForestClassifier,
         aid: int,
         mode: str = "chem-desc",  # alternative: fingerprint
-        random_state: int = 131313
+        random_state: int = 131313,
+        verbose: bool = True
 ) -> typing.Dict[str, typing.List[float]]:
     """
     Function that executes a random forest test for self distillation for one experiment with a data mode (fingerprint
@@ -19,6 +20,8 @@ def execute_sd_rf_test(
 
     Parameters
     ----------
+    verbose : bool, optional
+        Determines whether tqdm should be enabled or not.
     rf_teacher : RandomForestClassifier
         Teacher Random Forest
     rf_student : RandomForestClassifier
@@ -85,8 +88,14 @@ def execute_sd_rf_test(
         random_state=random_state
     )
 
+    # verbose control
+    if verbose:
+        iterating = tqdm(skf.split(scaled_data, labels))
+    else:
+        iterating = skf.split(scaled_data, labels)
+
     # for loop over splits to do cross validation
-    for train_index, test_index in tqdm(skf.split(scaled_data, labels)):
+    for train_index, test_index in iterating:
         # split dataset:
         x_train, x_test = scaled_data[train_index], scaled_data[test_index]
         y_train, y_test = labels[train_index], labels[test_index]
