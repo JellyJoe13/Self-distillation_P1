@@ -3,7 +3,7 @@ from tqdm import tqdm
 import pandas as pd
 import os
 import numpy as np
-from selfdest_toolkit.data_tools.cleaning import clean_numpy_data
+from selfdist_toolkit.data_tools.cleaning import clean_numpy_data
 
 
 def load_pure_data(

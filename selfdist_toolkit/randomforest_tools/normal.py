@@ -3,7 +3,7 @@ import typing
 from sklearn.metrics import accuracy_score, balanced_accuracy_score, roc_auc_score, precision_score, recall_score
 from tqdm import tqdm
 from sklearn.model_selection import StratifiedKFold
-from selfdest_toolkit.data_tools import loading, cleaning
+from selfdist_toolkit.data_tools import loading, cleaning
 
 
 def execute_normal_rf_test(

@@ -1,7 +1,7 @@
 import typing
 
 import numpy as np
-from selfdest_toolkit.data_tools.loading import load_pure_data
+from selfdist_toolkit.data_tools.loading import load_pure_data
 
 
 def generate_self_distillation_elements(

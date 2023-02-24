@@ -3,7 +3,7 @@ from sklearn.ensemble import RandomForestClassifier
 from sklearn.metrics import accuracy_score, balanced_accuracy_score, roc_auc_score, precision_score, recall_score
 from sklearn.model_selection import StratifiedKFold
 from tqdm import tqdm
-from selfdest_toolkit.data_tools import cleaning, sd_data_utils, loading
+from selfdist_toolkit.data_tools import cleaning, sd_data_utils, loading
 
 
 def execute_sd_rf_test(
