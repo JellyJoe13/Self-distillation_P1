@@ -1,4 +1,4 @@
-selfdest\_toolkit package
+selfdist\_toolkit package
 =========================
 
 Subpackages
@@ -7,12 +7,13 @@ Subpackages
 .. toctree::
    :maxdepth: 4
 
-   selfdest_toolkit.data_tools
+   selfdist_toolkit.data_tools
+   selfdist_toolkit.randomforest_tools
 
 Module contents
 ---------------
 
-.. automodule:: selfdest_toolkit
+.. automodule:: selfdist_toolkit
    :members:
    :undoc-members:
    :show-inheritance:

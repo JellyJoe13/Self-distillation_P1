@@ -1,7 +1,7 @@
-selfdest_toolkit
+selfdist_toolkit
 ================
 
 .. toctree::
    :maxdepth: 4
 
-   selfdest_toolkit
+   selfdist_toolkit
