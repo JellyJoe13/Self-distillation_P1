@@ -115,6 +115,7 @@ def experiment_preprocess(
     return aid_unique
 
 
+# TODO paralellize this to make it run faster
 def generate_chem_smiles(
         path_main_dataset: str = "data/df_assay_entries.csv",
         path_data: str = "data/"
