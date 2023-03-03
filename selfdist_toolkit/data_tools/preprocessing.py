@@ -178,8 +178,9 @@ def generate_chem_smiles_parallel(
     df = pd.read_csv(path_main_dataset)
     df = df[['cid', 'smiles']].sort_values(by=['cid']).drop_duplicates(subset=['cid']).reset_index()
     mols = [MolFromSmiles(x) for x in df.smiles.tolist()]
-    with Pool(cpu_count) as p:
-        result = np.array([p.map(descList[i][1] for i in range(len(descList)))]).T
+    with Pool(cpu_count()) as p:
+        result = np.array([p.map(func, mols) for _, func in tqdm(descList)]).T
+    return
 
 
 
