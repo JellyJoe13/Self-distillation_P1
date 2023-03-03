@@ -233,7 +233,6 @@ def generate_chem_smiles_parallel(
     return
 
 
-
 def generate_fingerprints(
         path_main_dataset: str = "data/df_assay_entries.csv",
         path_data: str = "data/"
@@ -288,6 +287,72 @@ def generate_fingerprints(
     return
 
 
+def generate_fingerprints_parallel(
+        path_main_dataset: str = "data/df_assay_entries.csv",
+        path_data: str = "data/"
+) -> None:
+    """
+    Function that if not already computed loads the dataset, identifies all unique molecules and generates the Morgan
+    Fingerprint for them using the rdkit. The result data is written to a numpy file containing the data and a mapping
+    file which maps entries from the data file to their actual molecule id(cid).
+    Difference from other function: works in parallel trying to utilize all cpu cores.
+
+    Parameters
+    ----------
+    path_main_dataset : str, optional
+        Path to main dataset.
+    path_data : str, optional
+        Path to data folder.
+
+    Returns
+    -------
+    Nothing
+    """
+
+    # create saving paths
+    fingerprint_data_path = {
+        "map": path_data + "fingerprints_map.npy",
+        "data": path_data + "fingerprints_data.npy"
+    }
+
+    # check if data already exists
+    if (not os.path.isfile(fingerprint_data_path["map"])) and (not os.path.isfile(fingerprint_data_path["data"])):
+        print("Generating fingerprints")
+
+        # load dataframe
+        df = pd.read_csv(path_main_dataset)
+
+        # select subset of dataframe
+        df = df[['cid', 'smiles']].sort_values(by=['cid']).drop_duplicates(subset=['cid']).reset_index()
+
+        # mol gen wrapper function
+        def mol_gen_wrapper(smiles):
+            from rdkit.Chem import MolFromSmiles
+            return MolFromSmiles(smiles)
+
+        # wrapper for fingerprint function
+        def fingerprint_wrapper(mol):
+            from rdkit.Chem import RDKFingerprint
+            return list(RDKFingerprint(mol))
+
+        # do in parallel
+        with Pool(cpu_count()) as p:
+            # generate the molecules
+            mols = p.map(mol_gen_wrapper, df.smiles.tolist())
+
+            # applying fingerprint function
+            result = np.array(p.map(fingerprint_wrapper, mols))
+
+            # save resulting data into files
+            np.save(fingerprint_data_path["map"], df.cid.to_numpy().astype(int))
+            np.save(fingerprint_data_path["data"], result.astype(bool))
+
+    else:
+        print("Fingerprints already generated")
+
+    return
+
+
 def experiment_whole_preprocess(
         path_main_dataset: str = "data/df_assay_entries.csv",
         path_data: str = "data/"
@@ -316,9 +381,9 @@ def experiment_whole_preprocess(
     aids = experiment_preprocess(path_main_dataset, path_data)
 
     # generate the chemical descriptor data
-    generate_chem_smiles(path_main_dataset, path_data)
+    generate_chem_smiles_parallel(path_main_dataset, path_data)
 
     # generate the fingerprint data
-    generate_fingerprints(path_main_dataset, path_data)
+    generate_fingerprints_parallel(path_main_dataset, path_data)
 
     return aids
