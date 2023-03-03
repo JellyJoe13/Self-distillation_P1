@@ -5,6 +5,7 @@ import pandas as pd
 from tqdm import tqdm
 from rdkit.Chem.Descriptors import descList
 from rdkit.Chem import MolFromSmiles, RDKFingerprint
+from multiprocess import Pool, cpu_count
 
 
 def check_data_file(
@@ -167,6 +168,18 @@ def generate_chem_smiles(
         print("Chemical descriptor data already generated")
 
     return
+
+
+def generate_chem_smiles_parallel(
+        path_main_dataset: str = "data/df_assay_entries.csv",
+        path_data: str = "data/"
+) -> None:
+    df = pd.read_csv(path_main_dataset)
+    df = df[['cid', 'smiles']].sort_values(by=['cid']).drop_duplicates(subset=['cid']).reset_index()
+    mols = [MolFromSmiles(x) for x in df.smiles.tolist()]
+    with Pool(cpu_count) as p:
+        result = np.array([p.map(descList[i][1] for i in range(len(descList)))]).T
+
 
 
 def generate_fingerprints(
