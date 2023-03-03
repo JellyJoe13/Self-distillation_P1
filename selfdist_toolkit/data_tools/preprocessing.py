@@ -218,13 +218,17 @@ def generate_chem_smiles_parallel(
         from rdkit.Chem import MolFromSmiles
         return MolFromSmiles(smiles)
 
+    def chem_desc_wrapper(mol):
+        from rdkit.Chem.Descriptors import descList
+        return [func(mol) for _, func in descList]
+
     # generate descriptors parallely using all possible CPUs
     with Pool(cpu_count()) as p:
         # generate the molecules
         mols = p.map(mol_gen_wrapper, df.smiles.tolist())
 
         # applying functions one after each other to the whole data in parallel
-        result = np.array([p.map(func, mols) for _, func in tqdm(descList)]).T
+        result = np.array(p.map(chem_desc_wrapper, mols))
 
         # saving the resulting data to files
         np.save(chem_data_path["map"], df.cid.to_numpy())
