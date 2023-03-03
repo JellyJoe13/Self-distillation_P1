@@ -116,7 +116,6 @@ def experiment_preprocess(
     return aid_unique
 
 
-# TODO paralellize this to make it run faster
 def generate_chem_smiles(
         path_main_dataset: str = "data/df_assay_entries.csv",
         path_data: str = "data/"
@@ -175,11 +174,62 @@ def generate_chem_smiles_parallel(
         path_main_dataset: str = "data/df_assay_entries.csv",
         path_data: str = "data/"
 ) -> None:
+    """
+    Function that if not already computed loads the dataset, identifies all unique molecules and generates chemical
+    descriptor data for them using the Descriptors from rdkit from descList. The result data is written to a numpy
+    file containing the data and a mapping file which maps entries from the data file to their actual molecule id(cid).
+    Difference from other function: works in parallel trying to utilize all CPU cores.
+
+    Parameters
+    ----------
+    path_main_dataset : str, optional
+        Path to main dataset.
+    path_data : str, optional
+        Path to data folder.
+
+    Returns
+    -------
+    Nothing
+    """
+
+    # creating saving paths
+    chem_data_path = {
+        "map": path_data + "chem-desc_map.npy",
+        "data": path_data + "chem-desc_data.npy"
+    }
+
+    # check if data already generated
+    if os.path.isfile(chem_data_path["map"]) and os.path.isfile(chem_data_path["data"]):
+        print("Chemical descriptor data already generated")
+        return
+
+    # message to user
+    print("Generating chemical descriptor data")
+
+    # load data
     df = pd.read_csv(path_main_dataset)
+
+    # get unique molecules
     df = df[['cid', 'smiles']].sort_values(by=['cid']).drop_duplicates(subset=['cid']).reset_index()
-    mols = [MolFromSmiles(x) for x in df.smiles.tolist()]
+
+    # generate the molecules
+    # mols = [MolFromSmiles(x) for x in df.smiles.tolist()]
+    def mol_gen_wrapper(smiles):
+        from rdkit.Chem import MolFromSmiles
+        return MolFromSmiles(smiles)
+
+    # generate descriptors parallely using all possible CPUs
     with Pool(cpu_count()) as p:
+        # generate the molecules
+        mols = p.map(mol_gen_wrapper, df.smiles.tolist())
+
+        # applying functions one after each other to the whole data in parallel
         result = np.array([p.map(func, mols) for _, func in tqdm(descList)]).T
+
+        # saving the resulting data to files
+        np.save(chem_data_path["map"], df.cid.to_numpy())
+        np.save(chem_data_path["data"], result)
+
     return
 
 
