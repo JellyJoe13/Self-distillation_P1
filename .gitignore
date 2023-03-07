@@ -1,6 +1,7 @@
 # Additional project related rules
 data/
 .idea/
+*tmp/
 
 # Byte-compiled / optimized / DLL files
 __pycache__/
