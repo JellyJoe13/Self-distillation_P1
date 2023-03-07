@@ -101,7 +101,7 @@ def evaluate_assays_rf(
 
     # load which of the experiments are already present in the temp folder (mechanism for aborted function to not loose
     # progress)
-    file_beginning = "perc-" + str(perc_sd) + "_"
+    file_beginning = "desc-" + str(perc_sd) + "_"
     already_computed = []
     for file in os.listdir(temp_path):
         # check if the rigth percentage
