@@ -112,8 +112,8 @@ def evaluate_assays_rf(
         else:
             already_computed.append(int(file[len(file_beginning):-5]))
 
-    # initialize pandas dataframe to put the data into
-    df = pd.DataFrame()
+    # initialize list to put the data into
+    df = []
 
     # iterate over aids
     for aid in tqdm(aid_list):
@@ -155,15 +155,17 @@ def evaluate_assays_rf(
             except ValueError:
                 continue
 
-        # add file data to the overall pandas dataframe
-        df = df.append(
+        # add file data to the overall list
+        df.append(
             helper_merge_accuracy_dicts(
                 aid=aid,
                 teacher=teacher_acc_dict,
                 student=student_acc_dict
-            ),
-            ignore_index=True
+            )
         )
+
+    # convert list to pandas dataframe
+    df = pd.DataFrame.from_records(df)
 
     # store the generated pandas dataframe to file name (and remove temporary files)
     # store result
