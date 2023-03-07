@@ -1,7 +1,10 @@
+import multiprocess
 import os.path
+import typing
 import numpy as np
 import pandas as pd
 from tqdm import tqdm
+from selfdist_toolkit.data_tools import loading
 
 
 def is_experiment_good(
@@ -138,3 +141,88 @@ def get_good_experiment_ids(
         ret = np.random.choice(np.array(good_aid), replace=False, size=number_to_sample)
         ret.sort()
         return ret
+
+
+def acquire_aid_statistical_info(
+        aid: int,
+        path_data: str = "data/"
+) -> typing.Tuple[int, int, int]:
+    """
+    Function that for a provided aid, counts the total number of molecules, the active and inactive ones and returns
+    the values.
+
+    Parameters
+    ----------
+    aid : int
+        Experiment it
+    path_data : str, optional
+        Path of the data where to find the data to use.
+
+    Returns
+    -------
+    total : int
+        Total number of molecules partaking in this experiment
+    active : int
+        Number of active molecules
+    inactive : int
+        Number of inactive molecules
+    """
+
+    # load the data from part file
+    df_aid = loading.load_pure_data(aid, path_data=path_data)
+
+    # get the activity list
+    act = (df_aid.activity == 'active').to_numpy()
+
+    # values to determine
+    total = act.shape[0]
+    active = int(np.sum(act))
+    inactive = total - active
+
+    # return values
+    return total, active, inactive
+
+
+def dataframe_add_statistical_exp_data(
+        df: pd.DataFrame,
+        do_in_par: bool = True,
+        path_data: str = "data/"
+) -> pd.DataFrame:
+    """
+    Function that takes a dataframe containing a aid column and fetches the experiment-related statistical information
+    for each entry using the acquire_aid_statistical_info(...) function.
+    Function also allows for multiprocessor usage.
+
+    Parameters
+    ----------
+    df : pd.DataFrame
+        Input DataFrame - must contain an aid column or else the function will run into an error.
+    do_in_par : bool, optional
+        Parameter controlling if multiprocessor processing is to be used or not. By default true.
+    path_data : str, optional
+        Path to data folder. Default: data/
+
+    Returns
+    -------
+    df : pd.DataFrame
+        DataFrame containing original data and also the statistical columns.
+    """
+
+    # copy dataframe
+    df_out = df.copy()
+
+    # get aid list
+    aid_list = df_out.aid.astype(int).tolist()
+
+    # separate if sequential or in parallel
+    if do_in_par:
+        with multiprocess.Pool(multiprocess.cpu_count()) as p:
+            df_out[["mol_total", "mol_active", "mol_inactive"]] = p.map(acquire_aid_statistical_info, aid_list)
+    else:
+        df_out[["mol_total", "mol_active", "mol_inactive"]] = [
+            acquire_aid_statistical_info(aid, path_data) for aid in aid_list
+        ]
+
+    return df_out
+
+
