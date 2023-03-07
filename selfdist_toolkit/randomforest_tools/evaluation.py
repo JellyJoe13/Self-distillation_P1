@@ -117,6 +117,8 @@ def evaluate_assays_rf(
 
     # iterate over aids
     for aid in tqdm(aid_list):
+        # check if experiment has minimum requirements:
+
         # initialize accuracy storages
         teacher_acc_dict = None
         student_acc_dict = None
@@ -132,23 +134,26 @@ def evaluate_assays_rf(
                 teacher_acc_dict = temp["teacher"]
                 student_acc_dict = temp["student"]
         else:
-            # calculate scores
-            teacher_acc_dict, student_acc_dict = execute_sd_rf_test_simplified(
-                aid=aid,
-                perc_sd=perc_sd,
-                mode=mode
-            )
-            # save it in case computation is interrupted
-            with open(temp_file_path, "w") as f:
-                # write results to storage
-                json.dump(
-                    {
-                        "teacher": teacher_acc_dict,
-                        "student": student_acc_dict
-                    },
-                    f,
-                    indent=4
+            try:
+                # calculate scores
+                teacher_acc_dict, student_acc_dict = execute_sd_rf_test_simplified(
+                    aid=aid,
+                    perc_sd=perc_sd,
+                    mode=mode
                 )
+                # save it in case computation is interrupted
+                with open(temp_file_path, "w") as f:
+                    # write results to storage
+                    json.dump(
+                        {
+                            "teacher": teacher_acc_dict,
+                            "student": student_acc_dict
+                        },
+                        f,
+                        indent=4
+                    )
+            except ValueError:
+                continue
 
         # add file data to the overall pandas dataframe
         df = df.append(
