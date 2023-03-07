@@ -88,7 +88,7 @@ def evaluate_assays_rf(
     # check if the file where it would have been stored is already present and return it.
     file_path = storage_folder + "perc-" + str(perc_sd) + ".csv"
     if os.path.isfile(file_path):
-        return pd.read_csv(file_path)
+        return pd.read_csv(file_path, index_col=0)
 
     # check if temporary folder is present and create it if not.
     temp_path = storage_folder + "tmp/"
