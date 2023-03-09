@@ -1,9 +1,9 @@
 name: automatic documentation generation
 # inspired by tutorial: https://www.youtube.com/watch?v=SxkM1SK9YlI
 
-on:
-  push:
-    branches: [main]
+#on:
+#  push:
+#    branches: [main]
 
 jobs:
   build_docs:
@@ -32,7 +32,7 @@ jobs:
 
       - name: Init new repo in dist folder and commit generated files
         run: |
-          cd docs/generated/html
+          cd docs/_build/html
           git init
           touch .nojekyll
           git add -A
@@ -46,4 +46,4 @@ jobs:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           branch: gh-pages
           force: true
-          directory: ./docs/generated/html
+          directory: ./docs/_build/html
