@@ -1,5 +1,5 @@
-Self-distillation_P1
-====================
+selfdist_toolkit
+================
 
 .. toctree::
    :maxdepth: 4

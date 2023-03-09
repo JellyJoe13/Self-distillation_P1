@@ -12,6 +12,14 @@ selfdist\_toolkit.randomforest\_tools.creation module
    :undoc-members:
    :show-inheritance:
 
+selfdist\_toolkit.randomforest\_tools.evaluation module
+-------------------------------------------------------
+
+.. automodule:: selfdist_toolkit.randomforest_tools.evaluation
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
 selfdist\_toolkit.randomforest\_tools.normal module
 ---------------------------------------------------
 

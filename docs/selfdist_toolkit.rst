@@ -8,6 +8,7 @@ Subpackages
    :maxdepth: 4
 
    selfdist_toolkit.data_tools
+   selfdist_toolkit.pyg_tools
    selfdist_toolkit.randomforest_tools
 
 Module contents
