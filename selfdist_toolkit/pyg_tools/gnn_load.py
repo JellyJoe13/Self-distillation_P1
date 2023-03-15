@@ -8,7 +8,8 @@ from torch_geometric.utils.smiles import from_smiles
 
 def load_pyg_data_from_smiles(
         smiles: str,
-        label: typing.Union[float, int]
+        label: typing.Union[float, int],
+        label_type: str = "smooth"
 ) -> torch_geometric.data.data.Data:
     """
     Function that encapsulates the function form pytorch_geometric called from_smiles(...) with the functionality to
@@ -16,6 +17,8 @@ def load_pyg_data_from_smiles(
 
     Parameters
     ----------
+    label_type : str, optional
+        Label type. Either smooth (one hot encoding) or hard (single number with class value)
     smiles : str
         smiles string compressing the molecule structure
     label : typing.Union[float, int]
@@ -32,7 +35,10 @@ def load_pyg_data_from_smiles(
 
     # todo: rethink to change it to 2-dimensional format for soft labels
     # add label information to graph
-    data.y = torch.tensor(np.array([label]), dtype=torch.float)
+    if label_type == "hard":
+        data.y = torch.tensor(np.array([label]), dtype=torch.float)
+    elif label_type == "smooth":
+        data.y = torch.tensor([1., 0.], dtype=torch.float) if label == 0. else torch.tensor([0., 1.], dtype=torch.float)
 
     # return data object
     return data
@@ -41,7 +47,8 @@ def load_pyg_data_from_smiles(
 def load_pyg_data_from_smiles_list(
         smiles_list: typing.List[str],
         label_list: typing.Union[typing.List[int], typing.List[float]],
-        do_in_parallel: bool = True
+        do_in_parallel: bool = True,
+        label_type: str = "smooth"
 ) -> typing.List[torch_geometric.data.data.Data]:
     """
     Function that is used to process a list of molecules and generate the pytorch geometric graph representation used
@@ -56,6 +63,8 @@ def load_pyg_data_from_smiles_list(
         list of labels the graph data should receive
     do_in_parallel : bool, optional
         Bool controlling if multiprocessing is to be used or not.
+    label_type : str, optional
+        Label type. Either smooth (one hot encoding) or hard (single number with class value)
 
     Returns
     -------
@@ -86,7 +95,7 @@ def load_pyg_data_from_smiles_list(
         """
 
         # calls single item function defined beforehand
-        return load_pyg_data_from_smiles(*input_tuple)
+        return load_pyg_data_from_smiles(*input_tuple, label_type=label_type)
 
     # if do in parallel - use all cores
     if do_in_parallel:
