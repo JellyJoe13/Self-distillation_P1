@@ -1,6 +1,7 @@
 import torch
 import torch_geometric
-from torch_geometric.nn import global_mean_pool, GINConv
+from torch_geometric.nn import global_mean_pool
+from selfdist_toolkit.pyg_tools.stanford_ogb_utils import GINConvOGB
 from selfdist_toolkit.pyg_tools.stanford_ogb_utils import AtomEncoder, BondEncoder
 import torch.nn.functional as F
 
@@ -57,7 +58,7 @@ class GIN_basic(torch.nn.Module):
             GIN Convolution layers like a residual.
         """
 
-        super(GIN_basic, self).__init()
+        super(GIN_basic, self).__init__()
 
         # basic definitions
         # setting of class specific parameters for training - most of them default values
@@ -74,9 +75,7 @@ class GIN_basic(torch.nn.Module):
         # GNN node related functionality
         # ==================================================================================
         # atom embedding
-        self.atom_encoder = AtomEncoder(emb_dim=self.embedding_dim, num_embeddings=self.atom_features)
-        # bond embedding
-        self.bond_encoder = BondEncoder(emb_dim=self.embedding_dim, num_embeddings=self.bond_features)
+        self.atom_encoder = AtomEncoder(emb_dim=self.embedding_dim)
         # Convolution Layer
         self.convs = torch.nn.ModuleList()
         self.batch_norms = torch.nn.ModuleList()
@@ -84,15 +83,9 @@ class GIN_basic(torch.nn.Module):
         # initialize layers
         for layer in range(self.num_layer):
             # create GIN Convolution layer using
-            self.convs.append(GINConv(
-                # using sequential module of linear batchnorm relu and linear
-                nn=torch.nn.Sequential(
-                    torch.nn.Linear(self.embedding_dim, 2 * self.embedding_dim),
-                    torch.nn.BatchNorm1d(2 * self.embedding_dim),
-                    torch.nn.ReLU(),
-                    torch.nn.Linear(2 * self.embedding_dim, self.embedding_dim)
-                )
-            ))
+            self.convs.append(
+                GINConvOGB(emb_dim=self.embedding_dim)
+            )
 
             # add a bach norm to the batch norm list
             self.batch_norms.append(torch.nn.BatchNorm1d(self.embedding_dim))
@@ -131,15 +124,12 @@ class GIN_basic(torch.nn.Module):
         # create embedding of the node data
         h_list = [self.atom_encoder(batched_data.x)]
 
-        # create edge/bond embedding
-        bond_emb = self.bond_encoder(batched_data.edge_attr)
-
         # for the convolution layer to the following steps
         for layer in range(self.num_layer):
 
             # generate the output of applying the convolution to the data (note that both node features and edge
             # features went through an embedding layer)
-            h = self.convs[layer](h_list[layer], batched_data.edge_index, bond_emb)
+            h = self.convs[layer](x=h_list[layer], edge_index=batched_data.edge_index, edge_attr=batched_data.edge_attr)
 
             # transform the output using a batch norm layer
             h = self.batch_norms[layer](h)
@@ -187,7 +177,7 @@ class GIN_basic(torch.nn.Module):
         # result to h_node
         # global node embedding/feature pooling using the batch mask which tells the algorithm which of the nodes
         # belong to which graph
-        h_graph = self.pool(node_representation, batched_data.batch)
+        h_graph = self.pooling(node_representation, batched_data.batch)
 
         # Generate the output which happens by putting the pooled results through another linear layer
         return self.graph_pred_linear(h_graph)
