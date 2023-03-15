@@ -8,14 +8,19 @@
 import torch
 
 
+# hardcoded info from ogb file
+num_embeddings_atom = [119, 5, 12, 12, 10, 6, 6, 2, 2]
+num_embeddings_bond = [5, 6, 2]
+
+
 class AtomEncoder(torch.nn.Module):
 
-    def __init__(self, emb_dim, num_embeddings):
+    def __init__(self, emb_dim):
         super(AtomEncoder, self).__init__()
 
         self.atom_embedding_list = torch.nn.ModuleList()
 
-        for i, dim in enumerate(num_embeddings):
+        for dim in num_embeddings_atom:
             emb = torch.nn.Embedding(dim, emb_dim)
             torch.nn.init.xavier_uniform_(emb.weight.data)
             self.atom_embedding_list.append(emb)
@@ -30,12 +35,12 @@ class AtomEncoder(torch.nn.Module):
 
 class BondEncoder(torch.nn.Module):
 
-    def __init__(self, emb_dim, num_embeddings):
+    def __init__(self, emb_dim):
         super(BondEncoder, self).__init__()
 
         self.bond_embedding_list = torch.nn.ModuleList()
 
-        for i, dim in enumerate(num_embeddings):
+        for i, dim in enumerate(num_embeddings_bond):
             emb = torch.nn.Embedding(dim, emb_dim)
             torch.nn.init.xavier_uniform_(emb.weight.data)
             self.bond_embedding_list.append(emb)
