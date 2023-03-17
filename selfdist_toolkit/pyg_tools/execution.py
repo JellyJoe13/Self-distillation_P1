@@ -9,10 +9,52 @@ import numpy as np
 #
 
 def training(
-        GNN: torch.nn.Module,
-        trainings_data
+        model: torch.nn.Module,
+        trainings_data: typing.Union[
+            torch_geometric.loader.DataLoader,
+            typing.List[torch_geometric.data.data.Data]
+        ],
+        device: torch.device,
+        optimizer: torch.optim.optimizer.Optimizer,
+        loss_criterion,
+        batch_size: int = 1
 ):
-    return None
+
+    # set model to train mode
+    model.train()
+
+    # save losses for statistical purposes
+    loss_storage = []
+
+    # if not a dataloader is provided create it
+    if not type(trainings_data) == torch_geometric.loader.DataLoader:
+        trainings_data = torch_geometric.loader.DataLoader(trainings_data, batch_size=batch_size)
+
+    # iterate over batches
+    for batch in tqdm(trainings_data):
+
+        # clear gradient
+        optimizer.zero_grad()
+
+        # transfer data to device
+        batch = batch.to(device)
+
+        # calculate the labels
+        y_pred = model(batch)
+
+        # use the loss criterion to generate the loss
+        loss = loss_criterion(y_pred, batch.y)
+
+        # train
+        loss.backward()
+
+        # optimization step
+        optimizer.step()
+
+        # append loss to saving
+        loss_storage.append(loss.detach().cpu().numpy())
+
+    return np.mean(np.array(loss_storage))
 
 
 def predict(
