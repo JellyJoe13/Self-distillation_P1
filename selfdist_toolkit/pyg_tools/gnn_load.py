@@ -4,6 +4,7 @@ import torch
 import numpy as np
 import torch_geometric
 from torch_geometric.utils.smiles import from_smiles
+from selfdist_toolkit.data_tools.loading import load_pure_data
 
 
 def load_pyg_data_from_smiles(
@@ -112,3 +113,47 @@ def load_pyg_data_from_smiles_list(
         return [
             helper(*t) for t in list(zip(smiles_list, label_list))
         ]
+
+
+def load_pyg_data_aid(
+        aid: int,
+        do_in_parallel: bool = True,
+        label_type: str = "smooth"
+) -> typing.List[torch_geometric.data.data.Data]:
+    """
+    Function that loads the pytorch geometric data objects for an experiment. Loads the smiles to load and their labels
+    and then calls load_pyg_data_from_smiles_list(...) from them.
+    Method to make notebooks containing such functionality look cleaner.
+
+    Parameters
+    ----------
+    aid : int
+        Experiment id for which to load the pyg data
+    do_in_parallel : bool, optional
+        Bool controlling if multiprocessing is to be used or not.
+    label_type : str, optional
+        Label type. Either smooth (one hot encoding) or hard (single number with class value)
+
+    Returns
+    -------
+    data_list : typing.List[torch_geometric.data.data.Data]
+        list of data gnn objects.
+    """
+
+    # load aid data
+    aid_data = load_pure_data(aid_to_load=aid)
+
+    # get smiles list and labels
+    smiles = aid_data.smiles.tolist()
+    labels = (aid_data.activity == "active").to_numpy().astype(float).tolist()
+
+    # call function for generating the pyg elements
+    pyg_data = load_pyg_data_from_smiles_list(
+        smiles_list=smiles,
+        label_list=labels,
+        do_in_parallel=do_in_parallel,
+        label_type=label_type
+    )
+
+    # return generated elements
+    return pyg_data
