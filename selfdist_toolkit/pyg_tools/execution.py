@@ -9,7 +9,7 @@ import numpy as np
 #
 
 def training(
-        GNN: torch.Module,
+        GNN: torch.nn.Module,
         trainings_data
 ):
     return None
@@ -30,8 +30,31 @@ def predict(
         ],
         device,
         reduce_to_hard_label: bool = False,
-        batch_size: int = 1 # only if no loader is supplied
-):
+        batch_size: int = 1  # only if no loader is supplied
+) -> np.ndarray[float]:
+    """
+    Function that given the inputs computes the label (soft or hard) of the inputted data using the inputted model.
+
+    Parameters
+    ----------
+    model : torch.nn.Module
+        Model used for prediction - will not be trained
+    testing_data_loader : typing.Union[torch_geometric.loader.DataLoader,typing.List[torch_geometric.data.data.Data]]
+        test data in the form of a list of pytorch geometric data objects or a data loader
+    device : torch.device
+        device on which the neural network should act on
+    reduce_to_hard_label : bool, optional
+        Controls if the output should be in the form of a single label or the actual 2-feature output containing a value
+        /probability/certainty of the element being a specific class. Default: False - no reduce
+    batch_size : int, optional
+        Batch size used in the Data Loader in case a List of data objects is provided instead of a DataLoader
+
+    Returns
+    -------
+    prediction : np.ndarray[float]
+        Prediction with dimension either: num_graphs x 2 or num_graphs
+    """
+
     # question to myself: use hard label or soft label for measure? like active/inactive or active:0.3, inactive: 0.9?
 
     # if input data_loader is not yet a loader - transform it into one
@@ -155,9 +178,11 @@ def self_distillation_procedure_soft(
         self_dist_list.append(current_data)
 
     # calculate list of elements that remain unclassified
-    mask = np.ones(self_distillation_data.shape, dtype=bool)
-    mask[picked_elements_idx] = False
-    unclassified_list = self_distillation_data[mask]
+    unclassified_list = [
+        element
+        for idx, element in enumerate(self_distillation_data)
+        if idx not in picked_elements_idx
+    ]
 
     # return elements and list of remaining unclassified self distillation elements
     return self_dist_list, unclassified_list
