@@ -7,10 +7,15 @@
 # ==================================================================================
 import torch
 from torch_geometric.nn import MessagePassing
+from torch_geometric.utils import smiles
 
-# hardcoded info from ogb file
-num_embeddings_atom = [119, 5, 12, 12, 10, 6, 6, 2, 2]
-num_embeddings_bond = [5, 6, 2]
+# hardcoded info from ogb file - DEPRECATED AS PYTORCH PRODUCES DIFFERENT FEATURES
+# num_embeddings_atom = [119, 5, 12, 12, 10, 6, 6, 2, 2]
+# num_embeddings_bond = [5, 6, 2]
+
+# new embedding dimensions from pytorch geometric
+num_embeddings_atom = list(map(len, smiles.x_map.values()))
+num_embeddings_bond = list(map(len, smiles.e_map.values()))
 
 
 class GINConvOGB(MessagePassing):
