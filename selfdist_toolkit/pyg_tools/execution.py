@@ -16,25 +16,64 @@ def training(
 
 
 def validating(
-        GNN: torch.Moduel,
+        GNN: torch.nn.Module,
         validation_data
 ):
     return None
 
 
-def testing(
-        GNN: torch.Module,
-        testing_data
+def predict(
+        model: torch.nn.Module,
+        testing_data_loader: typing.Union[
+            torch_geometric.loader.DataLoader,
+            typing.List[torch_geometric.data.data.Data]
+        ],
+        device,
+        reduce_to_hard_label: bool = False,
+        batch_size: int = 1 # only if no loader is supplied
 ):
-    return None
+    # question to myself: use hard label or soft label for measure? like active/inactive or active:0.3, inactive: 0.9?
+
+    # if input data_loader is not yet a loader - transform it into one
+    if not type(testing_data_loader) == torch_geometric.loader.DataLoader:
+        testing_data_loader = torch_geometric.loader.DataLoader(testing_data_loader, batch_size=batch_size)
+
+    # set the model to evaluation mode
+    model.eval()
+
+    # setup prediction list
+    prediction = []
+
+    # iterate over batches
+    for batch in tqdm(testing_data_loader):
+        # transfer batch to device
+        batch = batch.to(device)
+
+        # get prediction without loss generation
+        with torch.no_grad():
+            pred = model(batch)
+
+        # transfer result back to cpu and append it to list
+        prediction.append(pred.detach().cpu())
+
+    # fuze data
+    prediction = torch.cat(prediction, dim=0).numpy()
+
+    # if output reduction is specified transform it to unidimensional prediction
+    if reduce_to_hard_label:
+        prediction = np.argmax(prediction, axis=1)
+
+    # return prediction
+    return prediction
 
 
 def self_distillation_procedure_soft(
-        model: torch.Module,
+        model: torch.nn.Module,
         self_distillation_data: typing.List[torch_geometric.data.data.Data],
         number_to_pick: int,
-        device,
-        generation_mode: str = "actual"  # other: corrected
+        device: torch.device,
+        generation_mode: str = "actual",  # other: corrected
+        batch_size: int = 1
 ) -> typing.Tuple[
     typing.List[torch_geometric.data.data.Data],
     typing.List[torch_geometric.data.data.Data]
@@ -45,13 +84,15 @@ def self_distillation_procedure_soft(
 
     Parameters
     ----------
-    model : torch.Module
+    batch_size : int, optional
+        batch size = how many graphs to predict at once
+    model : torch.nn.Module
         Model which is to be used for predicting the labels of the data
     self_distillation_data : typing.List[torch_geometric.data.data.Data]
         List of pytorch geometric data objects to predict - candidates for self distillation items
     number_to_pick : int
         Number of most secure predictions to return
-    device
+    device : torch.device
         Device on which the model should work
     generation_mode : str
         Mode of label generation. Actual = use actual prediction as label (direct output of model), corrected = use
@@ -65,26 +106,14 @@ def self_distillation_procedure_soft(
         List of remaining self distillation candidate data objects
     """
 
-    # set the model to evaluation mode
-    model.eval()
-
-    # initialize lists containing the elements predictions
-    prediction = []
-
-    # iterate over batches
-    for batch in tqdm(torch_geometric.loader.DataLoader(self_distillation_data)):
-        # transfer batch to device
-        batch = batch.to(device)
-
-        # get prediction without loss generation
-        with torch.no_grad():
-            pred = model(batch)
-
-        # transfer result back to cpu and append it to list
-        prediction.append(pred.detach().cpu())
-
-    # fuze data
-    prediction = torch.cat(prediction, dim=0).numpy()
+    # generate prediction using prediction function
+    prediction = predict(
+        model=model,
+        device=device,
+        testing_data_loader=self_distillation_data,
+        reduce_to_hard_label=False,
+        batch_size=batch_size
+    )
 
     # calculate the absolute difference between the values for each of the 2 classes
     # the larger this value the more secure the prediction is
