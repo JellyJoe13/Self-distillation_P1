@@ -34,11 +34,37 @@ def self_distillation_procedure_soft(
         self_distillation_data: typing.List[torch_geometric.data.data.Data],
         number_to_pick: int,
         device,
-        generation_mode: "actual"  # other: corrected
+        generation_mode: str = "actual"  # other: corrected
 ) -> typing.Tuple[
     typing.List[torch_geometric.data.data.Data],
     typing.List[torch_geometric.data.data.Data]
 ]:
+    """
+    Function that takes model and self distillation candidates and predicts their labels. Most secure labels are picked
+    and returned as torch_geometric.data.data.Data objects with the correct labels.
+
+    Parameters
+    ----------
+    model : torch.Module
+        Model which is to be used for predicting the labels of the data
+    self_distillation_data : typing.List[torch_geometric.data.data.Data]
+        List of pytorch geometric data objects to predict - candidates for self distillation items
+    number_to_pick : int
+        Number of most secure predictions to return
+    device
+        Device on which the model should work
+    generation_mode : str
+        Mode of label generation. Actual = use actual prediction as label (direct output of model), corrected = use
+        corrected output in the sense of using a one-hot encoding of the label output (label output=argmax)
+
+    Returns
+    -------
+    self_distillation_data_list : typing.List[torch_geometric.data.data.Data]
+        List of self distillation items
+    remaining_candidates_list : typing.List[torch_geometric.data.data.Data]
+        List of remaining self distillation candidate data objects
+    """
+
     # set the model to evaluation mode
     model.eval()
 
