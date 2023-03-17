@@ -15,13 +15,6 @@ def training(
     return None
 
 
-def validating(
-        GNN: torch.nn.Module,
-        validation_data
-):
-    return None
-
-
 def predict(
         model: torch.nn.Module,
         testing_data_loader: typing.Union[
