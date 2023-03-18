@@ -6,7 +6,6 @@ import numpy as np
 
 
 # code inspired by https://github.com/snap-stanford/ogb/blob/master/examples/graphproppred/mol/main_pyg.py and
-# todo: rewrite data generation function so that output is not of shape 2, but 2x1 or 1x2 for dataloader to load it correctly
 
 def training(
         model: torch.nn.Module,

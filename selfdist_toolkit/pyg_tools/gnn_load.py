@@ -39,7 +39,8 @@ def load_pyg_data_from_smiles(
     if label_type == "hard":
         data.y = torch.tensor(np.array([label]), dtype=torch.float)
     elif label_type == "smooth":
-        data.y = torch.tensor([1., 0.], dtype=torch.float) if label == 0. else torch.tensor([0., 1.], dtype=torch.float)
+        data.y = torch.tensor([[1., 0.]], dtype=torch.float) if label == 0. \
+            else torch.tensor([[0., 1.]], dtype=torch.float)
 
     # return data object
     return data
