@@ -6,7 +6,7 @@ import numpy as np
 
 
 # code inspired by https://github.com/snap-stanford/ogb/blob/master/examples/graphproppred/mol/main_pyg.py and
-#
+# todo: rewrite data generation function so that output is not of shape 2, but 2x1 or 1x2 for dataloader to load it correctly
 
 def training(
         model: torch.nn.Module,
@@ -18,7 +18,30 @@ def training(
         optimizer: torch.optim.optimizer.Optimizer,
         loss_criterion,
         batch_size: int = 1
-):
+) -> np.ndarray[float]:
+    """
+    Function used for training the model on the supplied training data.
+
+    Parameters
+    ----------
+    model : torch.nn.Module
+        Model to train
+    trainings_data : typing.Union[torch_geometric.loader.DataLoader,typing.List[torch_geometric.data.data.Data]]
+        Data to train the model with
+    device : torch.device
+        Device on which the model should operate
+    optimizer : torch.optim.optimizer.Optimizer
+        Optimizer used for training
+    loss_criterion
+        Loss generating class/function
+    batch_size : int, optional
+        Batch size in case a list of pytorch geometric objects is supplied. Default: 1
+
+    Returns
+    -------
+    mean_loss : np.ndarray[float]
+        Mean over the batch wise losses
+    """
 
     # set model to train mode
     model.train()
