@@ -14,7 +14,7 @@ def training(
             typing.List[torch_geometric.data.data.Data]
         ],
         device: torch.device,
-        optimizer: torch.optim.optimizer.Optimizer,
+        optimizer: torch.optim.Optimizer,
         loss_criterion,
         batch_size: int = 1
 ) -> np.ndarray[float]:
@@ -62,7 +62,7 @@ def training(
         batch = batch.to(device)
 
         # calculate the labels
-        y_pred = model(batch)
+        y_pred = model(batch).flatten()
 
         # use the loss criterion to generate the loss
         loss = loss_criterion(y_pred, batch.y)
@@ -131,7 +131,7 @@ def predict(
 
         # get prediction without loss generation
         with torch.no_grad():
-            pred = model(batch)
+            pred = torch.nn.Sigmoid()(model(batch).flatten())
 
         # transfer result back to cpu and append it to list
         prediction.append(pred.detach().cpu())
@@ -147,7 +147,79 @@ def predict(
     return prediction
 
 
-def self_distillation_procedure_soft(
+def self_distillation_procedure_1dim(
+        model: torch.nn.Module,
+        self_distillation_data: typing.List[torch_geometric.data.data.Data],
+        number_to_pick: int,
+        device: torch.device,
+        correct_label: bool = False,
+        batch_size: int = 1
+) -> typing.Tuple[
+    typing.List[torch_geometric.data.data.Data],
+    typing.List[torch_geometric.data.data.Data]
+]:
+    """
+    Function that takes model and self distillation candidates and predicts their labels. Most secure labels are picked
+    and returned as torch_geometric.data.data.Data objects with the correct labels.
+
+    Parameters
+    ----------
+    batch_size : int, optional
+        batch size = how many graphs to predict at once
+    model : torch.nn.Module
+        Model which is to be used for predicting the labels of the data
+    self_distillation_data : typing.List[torch_geometric.data.data.Data]
+        List of pytorch geometric data objects to predict - candidates for self distillation items
+    number_to_pick : int
+        Number of most secure predictions to return
+    device : torch.device
+        Device on which the model should work
+    correct_label : bool, optional
+        Describes if a label should be put into with its value from the prediction e.g. 0.2 or if it should be corrected
+        to 0. or 1.
+
+    Returns
+    -------
+    self_distillation_data_list : typing.List[torch_geometric.data.data.Data]
+        List of self distillation items
+    remaining_candidates_list : typing.List[torch_geometric.data.data.Data]
+        List of remaining self distillation candidate data objects
+    """
+
+    # get prediction for self distillation data
+    sd_prediction = predict(
+        model=model,
+        testing_data_loader=self_distillation_data,
+        device=device,
+        batch_size=batch_size,
+        reduce_to_hard_label=False
+    )
+
+    # pick the classes with most security = difference from 0.5
+    idx_sorted = np.argsort(np.abs(sd_prediction-0.5))[::-1]
+
+    # make list of selected and not selected data objects
+    selected_data = []
+    non_selected_data = [self_distillation_data[idx] for idx in idx_sorted[number_to_pick:]]
+
+    # for the selected data set the new label
+    for idx in idx_sorted[:number_to_pick]:
+        # fetch data
+        curr_data = self_distillation_data[idx]
+
+        # set new label. corrected or not?
+        if correct_label:
+            curr_data.y = torch.tensor([1.]) if sd_prediction[idx] >= 0.5 else torch.tensor([0.])
+        else:
+            curr_data.y = sd_prediction[idx]
+
+        # append data to list
+        selected_data.append(curr_data)
+
+    return selected_data, non_selected_data
+
+
+def self_distillation_procedure_2dim(
         model: torch.nn.Module,
         self_distillation_data: typing.List[torch_geometric.data.data.Data],
         number_to_pick: int,

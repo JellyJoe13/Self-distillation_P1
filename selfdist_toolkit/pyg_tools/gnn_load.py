@@ -10,7 +10,7 @@ from selfdist_toolkit.data_tools.loading import load_pure_data
 def load_pyg_data_from_smiles(
         smiles: str,
         label: typing.Union[float, int],
-        label_type: str = "smooth"
+        label_type: str = "hard"
 ) -> torch_geometric.data.data.Data:
     """
     Function that encapsulates the function form pytorch_geometric called from_smiles(...) with the functionality to
@@ -50,7 +50,7 @@ def load_pyg_data_from_smiles_list(
         smiles_list: typing.List[str],
         label_list: typing.Union[typing.List[int], typing.List[float]],
         do_in_parallel: bool = True,
-        label_type: str = "smooth"
+        label_type: str = "hard"
 ) -> typing.List[torch_geometric.data.data.Data]:
     """
     Function that is used to process a list of molecules and generate the pytorch geometric graph representation used
@@ -119,7 +119,7 @@ def load_pyg_data_from_smiles_list(
 def load_pyg_data_aid(
         aid: int,
         do_in_parallel: bool = True,
-        label_type: str = "smooth"
+        label_type: str = "hard"
 ) -> typing.List[torch_geometric.data.data.Data]:
     """
     Function that loads the pytorch geometric data objects for an experiment. Loads the smiles to load and their labels

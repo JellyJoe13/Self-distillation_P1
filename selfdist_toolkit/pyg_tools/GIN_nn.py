@@ -18,7 +18,7 @@ class GIN_basic(torch.nn.Module):
     # inspired by: https://github.com/snap-stanford/ogb/blob/master/examples/graphproppred/mol/gnn.py
     def __init__(
             self,
-            num_classes: int,
+            num_classes: int = 1,
             num_layer: int = 5,
             drop_ratio: float = 0.5,
             embedding_dim: int = 300,
@@ -34,10 +34,12 @@ class GIN_basic(torch.nn.Module):
 
         Parameters
         ----------
-        num_classes : int
+        num_classes : int, optional
             Number of label classes, in our case this will most certainly be 2 - one for activeness, one for
             inactiveness - using soft labels meaning output will be probability of it being active.
-            Other option 1 - hard labels - either zero or one
+            Other option 1 - hard labels - either zero or one.
+            Smooth labels are becoming deprecated as the active/inactive is interpreted in the OGB datasets as one
+            class. (also because of pos weights in loss function), default: 1
         num_layer : int, optional
             Number of GIN Convolution layer, default: 5
         drop_ratio : float, optional
