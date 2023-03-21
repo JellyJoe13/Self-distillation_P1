@@ -211,7 +211,7 @@ def self_distillation_procedure_1dim(
         if correct_label:
             curr_data.y = torch.tensor([1.]) if sd_prediction[idx] >= 0.5 else torch.tensor([0.])
         else:
-            curr_data.y = sd_prediction[idx]
+            curr_data.y = torch.tensor([sd_prediction[idx]])
 
         # append data to list
         selected_data.append(curr_data)
