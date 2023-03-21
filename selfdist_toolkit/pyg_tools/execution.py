@@ -141,7 +141,7 @@ def predict(
 
     # if output reduction is specified transform it to unidimensional prediction
     if reduce_to_hard_label:
-        prediction = np.argmax(prediction, axis=1)
+        prediction = (prediction >= 0.5).astype(int)
 
     # return prediction
     return prediction
