@@ -61,6 +61,98 @@ def generate_gnn_sd_data(
     return data_list
 
 
+def self_distillation_procedure_1dim_advanced(
+        model: torch.nn.Module,
+        self_distillation_data: typing.List[torch_geometric.data.data.Data],
+        number_to_pick: int,
+        pos_elem_to_pick_ratio: float,
+        device: torch.device,
+        correct_label: bool = False,
+        batch_size: int = 1
+):
+    """
+    Function that takes model and self distillation candidates and predicts their labels. Most secure labels are picked
+    and returned as torch_geometric.data.data.Data objects with the correct labels. More advanced version, it tries
+    to pick a certain percentage of positive or close to positive elements and (the rest) certain negative labels.
+
+    Parameters
+    ----------
+    batch_size : int, optional
+        batch size = how many graphs to predict at once
+    model : torch.nn.Module
+        Model which is to be used for predicting the labels of the data
+    self_distillation_data : typing.List[torch_geometric.data.data.Data]
+        List of pytorch geometric data objects to predict - candidates for self distillation items
+    number_to_pick : int
+        Number of most secure predictions to return
+    pos_elem_to_pick_ratio : float
+        Percentage of positive (or potentially positive) elements to pick
+    device : torch.device
+        Device on which the model should work
+    correct_label : bool, optional
+        Describes if a label should be put into with its value from the prediction e.g. 0.2 or if it should be corrected
+        to 0. or 1. IMPORTANT NOTE: does not overcorrect labels. if a 'positive' label is only 0.3 in value it will
+        still be treated and returned as negative, so no overcorrection!
+
+    Returns
+    -------
+    self_distillation_data_list : typing.List[torch_geometric.data.data.Data]
+        List of self distillation items
+    remaining_candidates_list : typing.List[torch_geometric.data.data.Data]
+        List of remaining self distillation candidate data objects
+    """
+
+    # generate the prediction
+    prediction = predict(
+        model=model,
+        testing_data_loader=self_distillation_data,
+        reduce_to_hard_label=False,
+        batch_size=batch_size,
+        device=device
+    )
+
+    # sort list of predictions based on their value
+    idx_sort = np.argsort(prediction)
+
+    # identify how many positive and negative elements to return
+    pos_elem_count = int(number_to_pick * pos_elem_to_pick_ratio)
+    neg_elem_count = number_to_pick - pos_elem_count
+
+    # return first few elements
+    # return last few elements
+    # should be safest elements possible (however positively chosen elements may also be uncertain negative elements)
+    selection = np.concatenate([
+        idx_sort[:neg_elem_count],
+        idx_sort[-pos_elem_count:]
+    ])
+    non_selection_bucket = [
+        self_distillation_data[idx]
+        for idx in idx_sort[:-pos_elem_count][neg_elem_count:]
+    ]
+
+    # iterate over index lists and put the data in the specified container
+    selection_bucket = []
+    for idx in selection:
+        # fetch data
+        data = self_distillation_data[idx]
+
+        # set new label
+        if correct_label:
+            # correct data to 1 or 0 label
+            data.y = torch.tensor([1], dtype=torch.float) if prediction[idx] >= 0.5\
+                else torch.tensor([0], dtype=torch.float)
+
+        else:
+            # do not correct label and just set the new label as e.g. 0.2
+            data.y = torch.tensor([prediction[idx]], dtype=torch.float)
+
+        # append data object to list
+        selection_bucket.append(data)
+
+    # return data in two buckets
+    return selection_bucket, non_selection_bucket
+
+
 def self_distillation_procedure_1dim(
         model: torch.nn.Module,
         self_distillation_data: typing.List[torch_geometric.data.data.Data],
@@ -125,7 +217,7 @@ def self_distillation_procedure_1dim(
         if correct_label:
             curr_data.y = torch.tensor([1.]) if sd_prediction[idx] >= 0.5 else torch.tensor([0.])
         else:
-            curr_data.y = torch.tensor([sd_prediction[idx]])
+            curr_data.y = torch.tensor([sd_prediction[idx]], dtype=torch.float)
 
         # append data to list
         selected_data.append(curr_data)
