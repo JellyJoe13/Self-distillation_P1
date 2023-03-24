@@ -16,13 +16,16 @@ def training(
         device: torch.device,
         optimizer: torch.optim.Optimizer,
         loss_criterion,
-        batch_size: int = 1
+        batch_size: int = 1,
+        verbose: bool = True
 ) -> np.ndarray[float]:
     """
     Function used for training the model on the supplied training data.
 
     Parameters
     ----------
+    verbose : bool, optional
+        Decides whether tqdm progress bar is shown or not. Default: True
     model : torch.nn.Module
         Model to train
     trainings_data : typing.Union[torch_geometric.loader.DataLoader,typing.List[torch_geometric.data.data.Data]]
@@ -52,8 +55,14 @@ def training(
     if not type(trainings_data) == torch_geometric.loader.DataLoader:
         trainings_data = torch_geometric.loader.DataLoader(trainings_data, batch_size=batch_size)
 
+    # decide if verbose or not
+    if verbose:
+        iterate = tqdm(trainings_data)
+    else:
+        iterate = trainings_data
+
     # iterate over batches
-    for batch in tqdm(trainings_data):
+    for batch in iterate:
 
         # clear gradient
         optimizer.zero_grad()
@@ -87,13 +96,16 @@ def predict(
         ],
         device,
         reduce_to_hard_label: bool = False,
-        batch_size: int = 1  # only if no loader is supplied
+        batch_size: int = 1,  # only if no loader is supplied
+        verbose: bool = True
 ) -> np.ndarray[float]:
     """
     Function that given the inputs computes the label (soft or hard) of the inputted data using the inputted model.
 
     Parameters
     ----------
+    verbose : bool, optional
+        Decides whether tqdm progress bar is shown or not. Default: True
     model : torch.nn.Module
         Model used for prediction - will not be trained
     testing_data_loader : typing.Union[torch_geometric.loader.DataLoader,typing.List[torch_geometric.data.data.Data]]
@@ -124,8 +136,14 @@ def predict(
     # setup prediction list
     prediction = []
 
+    # decide if verbose or not
+    if verbose:
+        iterate = tqdm(testing_data_loader)
+    else:
+        iterate = testing_data_loader
+
     # iterate over batches
-    for batch in tqdm(testing_data_loader):
+    for batch in iterate:
         # transfer batch to device
         batch = batch.to(device)
 
