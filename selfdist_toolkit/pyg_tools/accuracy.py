@@ -1,3 +1,5 @@
+import torch
+import torch_geometric.loader
 from sklearn.metrics import accuracy_score, balanced_accuracy_score, roc_auc_score, precision_score, recall_score
 import numpy as np
 import pandas as pd
@@ -31,6 +33,14 @@ class AccuracyStorage:
 
     def to_df(self, index):
         return pd.DataFrame(self.to_dict(), index=[index])
+
+
+def helper_pyg_to_numpy_label(
+        data_loader: torch_geometric.loader.DataLoader
+) -> np.ndarray[int]:
+
+    # iterate over dataloader and concatenate labels
+    return torch.concat([batch.y for batch in data_loader]).detach().cpu().numpy().astype(int)
 
 
 def calculate_accuracies_1d(
