@@ -1,5 +1,6 @@
 from sklearn.metrics import accuracy_score, balanced_accuracy_score, roc_auc_score, precision_score, recall_score
 import numpy as np
+import pandas as pd
 import typing
 
 
@@ -27,6 +28,9 @@ class AccuracyStorage:
             "precision": self.precision,
             "recall": self.recall
         }
+
+    def to_df(self, index):
+        return pd.DataFrame(self.to_dict(), index=[index])
 
 
 def calculate_accuracies_1d(
