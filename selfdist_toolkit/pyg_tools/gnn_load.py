@@ -7,6 +7,23 @@ from torch_geometric.utils.smiles import from_smiles
 from selfdist_toolkit.data_tools.loading import load_pure_data
 
 
+def load_all_pyg(
+        path_data: str = "data/"
+) -> typing.List[torch_geometric.data.data.Data]:
+
+    # load all smiles strings
+    all_smiles = np.load(path_data + "smiles.npy", allow_pickle=True)[:, 1].astype(str)
+
+    # create dummy label for all smiles
+    dummy_label = [2.] * len(all_smiles)
+
+    # create data objects
+    data_list = load_pyg_data_from_smiles_list(smiles_list=all_smiles.tolist(), label_list=dummy_label)
+
+    # return results
+    return data_list
+
+
 def load_pyg_data_from_smiles(
         smiles: str,
         label: typing.Union[float, int],
