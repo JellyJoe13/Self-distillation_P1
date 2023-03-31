@@ -8,3 +8,4 @@ pip install torch-scatter torch-sparse torch-cluster torch-spline-conv torch-geo
 
 pip install numpy pandas rdkit scikit-learn
 
+pip install multiprocess jupyterlab matplotlib
