@@ -36,11 +36,19 @@ class AccuracyStorage:
 
 
 def helper_pyg_to_numpy_label(
-        data_loader: torch_geometric.loader.DataLoader
+        data_loader: torch_geometric.loader.DataLoader,
+        correct_label: bool = False
 ) -> np.ndarray[int]:
 
-    # iterate over dataloader and concatenate labels
-    return torch.concat([batch.y for batch in data_loader]).detach().cpu().numpy().astype(int)
+    # decide if the labels need to be converted to hard labels
+    if correct_label:
+        return torch.concat([
+            torch.tensor([1.], dtype=torch.float) if batch.y >= 0.5 else torch.tensor([0.], dtype=torch.float)
+            for batch in data_loader
+        ]).detach().cpu().numpy().astype(int)
+    else:
+        # iterate over dataloader and concatenate labels
+        return torch.concat([batch.y for batch in data_loader]).detach().cpu().numpy().astype(int)
 
 
 def calculate_accuracies_1d(
