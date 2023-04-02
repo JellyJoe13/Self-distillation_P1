@@ -73,7 +73,8 @@ def calculate_accuracies_1d(
     precision = precision_score(
         y_true=y_true,
         y_pred=y_pred,
-        average="weighted"
+        average="weighted",
+        zero_division=0
     )
     recall = recall_score(
         y_true=y_true,
