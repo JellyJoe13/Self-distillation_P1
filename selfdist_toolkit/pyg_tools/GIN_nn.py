@@ -97,6 +97,9 @@ class GIN_basic(torch.nn.Module):
         # for the current graph to predict
         self.pooling = global_mean_pool
 
+        if self.jk == "cat":
+            self.transformation_lin = torch.nn.Linear((self.num_layer+1)*self.embedding_dim, self.embedding_dim)
+
         # final linear layer
         # additional layer to work with the fetched node embeddings as well in the neural network context
         self.graph_pred_linear = torch.nn.Linear(self.embedding_dim, self.num_classes)
@@ -174,6 +177,13 @@ class GIN_basic(torch.nn.Module):
             #   I will leave it as it is
             for layer in range(self.num_layer + 1):
                 node_representation += h_list[layer]
+
+        elif self.jk == "cat":
+            # concatenate all layers and push them through linear layer to reduce them to one layer again
+            tmp = torch.concatenate(h_list, axis=1)
+
+            # put through linear layer
+            node_representation = self.transformation_lin(tmp)
 
         # ==============================================================================================
         # result to h_node
