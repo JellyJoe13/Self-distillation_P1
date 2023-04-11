@@ -136,7 +136,8 @@ def load_pyg_data_from_smiles_list(
 def load_pyg_data_aid(
         aid: int,
         do_in_parallel: bool = True,
-        label_type: str = "hard"
+        label_type: str = "hard",
+        path_data: str = "data/"
 ) -> typing.List[torch_geometric.data.data.Data]:
     """
     Function that loads the pytorch geometric data objects for an experiment. Loads the smiles to load and their labels
@@ -145,6 +146,8 @@ def load_pyg_data_aid(
 
     Parameters
     ----------
+    path_data : str, optional
+        Path to data folder
     aid : int
         Experiment id for which to load the pyg data
     do_in_parallel : bool, optional
@@ -159,7 +162,7 @@ def load_pyg_data_aid(
     """
 
     # load aid data
-    aid_data = load_pure_data(aid_to_load=aid)
+    aid_data = load_pure_data(aid_to_load=aid, path_data=path_data)
 
     # get smiles list and labels
     smiles = aid_data.smiles.tolist()
