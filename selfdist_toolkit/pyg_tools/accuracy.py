@@ -1,6 +1,7 @@
 import torch
 import torch_geometric.loader
 from sklearn.metrics import accuracy_score, balanced_accuracy_score, roc_auc_score, precision_score, recall_score
+from sklearn.metrics import matthews_corrcoef
 import numpy as np
 import pandas as pd
 import typing
@@ -13,7 +14,8 @@ class AccuracyStorage:
             balanced_accuracy: float,
             roc_score: float,
             precision: float,
-            recall: float
+            recall: float,
+            mcc: float = 0
     ):
         # assigning values
         self.accuracy_score = accuracy
@@ -21,6 +23,7 @@ class AccuracyStorage:
         self.roc_score = roc_score
         self.precision = precision
         self.recall = recall
+        self.mcc = mcc
 
     def to_dict(self) -> typing.Dict[str, float]:
         return {
@@ -28,7 +31,8 @@ class AccuracyStorage:
             "balanced_accuracy": self.balanced_accuracy,
             "roc_score": self.roc_score,
             "precision": self.precision,
-            "recall": self.recall
+            "recall": self.recall,
+            "mcc": self.mcc
         }
 
     def to_df(self, index):
@@ -81,6 +85,10 @@ def calculate_accuracies_1d(
         y_pred=y_pred,
         average="weighted"
     )
+    mcc = matthews_corrcoef(
+        y_true=y_true,
+        y_pred=y_pred
+    )
 
     # generate accuracy storage class
     return AccuracyStorage(
@@ -88,5 +96,6 @@ def calculate_accuracies_1d(
         balanced_accuracy=balanced_accuracy,
         roc_score=roc,
         precision=precision,
-        recall=recall
+        recall=recall,
+        mcc=mcc
     )

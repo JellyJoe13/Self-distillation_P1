@@ -1,0 +1,3 @@
+,training,training,training,training,training,testing,testing,testing,testing,testing
+,accuracy_score,balanced_accuracy,roc_score,precision,recall,accuracy_score,balanced_accuracy,roc_score,precision,recall
+1,0.7445504087193461,0.7894818441452469,0.7894818441452469,0.9669323454825047,0.7445504087193461,0.7445504087193461,0.7894818441452469,0.7894818441452469,0.9669323454825047,0.7445504087193461
