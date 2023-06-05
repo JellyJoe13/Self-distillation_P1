@@ -4,6 +4,7 @@ from torch_geometric.nn import global_mean_pool
 from selfdist_toolkit.pyg_tools.stanford_ogb_utils import GINConvOGB
 from selfdist_toolkit.pyg_tools.stanford_ogb_utils import AtomEncoder, BondEncoder
 import torch.nn.functional as F
+import numpy as np
 
 
 # todo: stochastic depth?
@@ -25,7 +26,8 @@ class GIN_basic(torch.nn.Module):
             atom_features: int = 9,
             bond_features: int = 3,
             jk: str = "last",
-            residual: bool = False
+            residual: bool = False,
+            stochastic_depth: bool = False
     ):
         """
         Initialize pytorch geometric graph neural network using a number of GIN Convolution layers to derive a graph
@@ -73,6 +75,7 @@ class GIN_basic(torch.nn.Module):
         self.bond_features = bond_features
         self.residual = residual
         self.jk = jk
+        self.stochastic_depth = stochastic_depth
 
         # GNN node related functionality
         # ==================================================================================
@@ -134,7 +137,7 @@ class GIN_basic(torch.nn.Module):
 
             # generate the output of applying the convolution to the data (note that both node features and edge
             # features went through an embedding layer)
-            h = self.convs[layer](x=h_list[layer], edge_index=batched_data.edge_index, edge_attr=batched_data.edge_attr)
+            h = self.convs[layer](x=h_list[-1], edge_index=batched_data.edge_index, edge_attr=batched_data.edge_attr)
 
             # transform the output using a batch norm layer
             h = self.batch_norms[layer](h)
@@ -154,10 +157,11 @@ class GIN_basic(torch.nn.Module):
             # if the residual parameter is true, then addthe result of the previous layer to this layer in a manner of
             # using a residual (with the current layer being similar to the residual of sorts)
             if self.residual:
-                h += h_list[layer]
+                h += h_list[-1]
 
             # save the newest layer output to the list
-            h_list.append(h)
+            if (not self.stochastic_depth) or (np.random.rand() > 0.2):
+                h_list.append(h)
 
         # FORK FOR THE OUTPUT GENERATION METHOD
         # Either:
@@ -175,7 +179,7 @@ class GIN_basic(torch.nn.Module):
             # iterate over each layer and sum up results
             # comment: probably inefficient to do so, but because other routines may interfere with loss generation
             #   I will leave it as it is
-            for layer in range(self.num_layer + 1):
+            for layer in range(len(self.num_layer)):
                 node_representation += h_list[layer]
 
         elif self.jk == "cat":
