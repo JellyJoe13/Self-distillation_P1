@@ -1,0 +1,567 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>selfdist_toolkit.data_tools package &mdash; Self-distillation 1.0.0 documentation</title>
+      <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script src="_static/jquery.js"></script>
+        <script src="_static/_sphinx_javascript_frameworks_compat.js"></script>
+        <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+        <script src="_static/doctools.js"></script>
+        <script src="_static/sphinx_highlight.js"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="selfdist_toolkit.pyg_tools package" href="selfdist_toolkit.pyg_tools.html" />
+    <link rel="prev" title="selfdist_toolkit package" href="selfdist_toolkit.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="index.html" class="icon icon-home">
+            Self-distillation
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="modules.html">selfdist_toolkit</a><ul class="current">
+<li class="toctree-l2 current"><a class="reference internal" href="selfdist_toolkit.html">selfdist_toolkit package</a><ul class="current">
+<li class="toctree-l3 current"><a class="reference internal" href="selfdist_toolkit.html#subpackages">Subpackages</a><ul class="current">
+<li class="toctree-l4 current"><a class="current reference internal" href="#">selfdist_toolkit.data_tools package</a></li>
+<li class="toctree-l4"><a class="reference internal" href="selfdist_toolkit.pyg_tools.html">selfdist_toolkit.pyg_tools package</a></li>
+<li class="toctree-l4"><a class="reference internal" href="selfdist_toolkit.randomforest_tools.html">selfdist_toolkit.randomforest_tools package</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="selfdist_toolkit.html#module-selfdist_toolkit">Module contents</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">Self-distillation</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="modules.html">selfdist_toolkit</a></li>
+          <li class="breadcrumb-item"><a href="selfdist_toolkit.html">selfdist_toolkit package</a></li>
+      <li class="breadcrumb-item active">selfdist_toolkit.data_tools package</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="_sources/selfdist_toolkit.data_tools.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="selfdist-toolkit-data-tools-package">
+<h1>selfdist_toolkit.data_tools package<a class="headerlink" href="#selfdist-toolkit-data-tools-package" title="Permalink to this heading"></a></h1>
+<section id="submodules">
+<h2>Submodules<a class="headerlink" href="#submodules" title="Permalink to this heading"></a></h2>
+</section>
+<section id="module-selfdist_toolkit.data_tools.analysis">
+<span id="selfdist-toolkit-data-tools-analysis-module"></span><h2>selfdist_toolkit.data_tools.analysis module<a class="headerlink" href="#module-selfdist_toolkit.data_tools.analysis" title="Permalink to this heading"></a></h2>
+<dl class="py function">
+<dt class="sig sig-object py" id="selfdist_toolkit.data_tools.analysis.acquire_aid_statistical_info">
+<span class="sig-prename descclassname"><span class="pre">selfdist_toolkit.data_tools.analysis.</span></span><span class="sig-name descname"><span class="pre">acquire_aid_statistical_info</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">aid</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">path_data</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">'data/'</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Tuple</span><span class="p"><span class="pre">[</span></span><span class="pre">int</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">int</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">int</span><span class="p"><span class="pre">]</span></span></span></span><a class="headerlink" href="#selfdist_toolkit.data_tools.analysis.acquire_aid_statistical_info" title="Permalink to this definition"></a></dt>
+<dd><p>Function that for a provided aid, counts the total number of molecules, the active and inactive ones and returns
+the values.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>aid</strong> (<em>int</em>) – Experiment it</p></li>
+<li><p><strong>path_data</strong> (<em>str</em><em>, </em><em>optional</em>) – Path of the data where to find the data to use.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p><ul class="simple">
+<li><p><strong>total</strong> (<em>int</em>) – Total number of molecules partaking in this experiment</p></li>
+<li><p><strong>active</strong> (<em>int</em>) – Number of active molecules</p></li>
+<li><p><strong>inactive</strong> (<em>int</em>) – Number of inactive molecules</p></li>
+</ul>
+</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="selfdist_toolkit.data_tools.analysis.dataframe_add_statistical_exp_data">
+<span class="sig-prename descclassname"><span class="pre">selfdist_toolkit.data_tools.analysis.</span></span><span class="sig-name descname"><span class="pre">dataframe_add_statistical_exp_data</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">df</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">DataFrame</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">do_in_par</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">path_data</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">'data/'</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">DataFrame</span></span></span><a class="headerlink" href="#selfdist_toolkit.data_tools.analysis.dataframe_add_statistical_exp_data" title="Permalink to this definition"></a></dt>
+<dd><p>Function that takes a dataframe containing a aid column and fetches the experiment-related statistical information
+for each entry using the acquire_aid_statistical_info(…) function.
+Function also allows for multiprocessor usage.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>df</strong> (<em>pd.DataFrame</em>) – Input DataFrame - must contain an aid column or else the function will run into an error.</p></li>
+<li><p><strong>do_in_par</strong> (<em>bool</em><em>, </em><em>optional</em>) – Parameter controlling if multiprocessor processing is to be used or not. By default true.</p></li>
+<li><p><strong>path_data</strong> (<em>str</em><em>, </em><em>optional</em>) – Path to data folder. Default: data/</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p><strong>df</strong> – DataFrame containing original data and also the statistical columns.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>pd.DataFrame</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="selfdist_toolkit.data_tools.analysis.get_good_experiment_ids">
+<span class="sig-prename descclassname"><span class="pre">selfdist_toolkit.data_tools.analysis.</span></span><span class="sig-name descname"><span class="pre">get_good_experiment_ids</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">number_to_sample</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">inf</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">min_number_molecules</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">10000</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">contains_true</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">min_number_positive_percentage</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">0.01</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">path_data</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">'data/'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">random_seed</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">131313</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">ndarray</span></span></span><a class="headerlink" href="#selfdist_toolkit.data_tools.analysis.get_good_experiment_ids" title="Permalink to this definition"></a></dt>
+<dd><p>Function that checks all experiments (already seperated into multiple csv files in folder experiment-wise) and
+checks each experiment if it has at least &lt;param&gt; items, has both active and inactive molecules, has at least a
+certain percentage of active molecules. Then randomly sample a few of them to reduce time for testing all
+experiments.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>number_to_sample</strong> (<em>int</em><em>, </em><em>optional</em>) – Number of experiments to return (randomly), by default set to np.inf which means no sampling takes place and all
+valid experiments are returned.</p></li>
+<li><p><strong>min_number_molecules</strong> (<em>int</em><em>, </em><em>optional</em>) – Minimum number of molecules an experiment has to contain to be considered good. Default: 10000</p></li>
+<li><p><strong>contains_true</strong> (<em>bool</em><em>, </em><em>optional</em>) – Determines whether checks on the number of active molecules should be executed. Default: True</p></li>
+<li><p><strong>min_number_positive_percentage</strong> (<em>float</em><em>, </em><em>optional</em>) – Minimum percentage of active molecules an experiment has to contain to be considered good. Default: 0.01 -&gt; 1%</p></li>
+<li><p><strong>path_data</strong> (<em>str</em><em>, </em><em>optional</em>) – Path to data folder. Default: data/</p></li>
+<li><p><strong>random_seed</strong> (<em>int</em><em>, </em><em>optional</em>) – Random seed to set at beginning. Default: 131313</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p><strong>aid_list</strong> – List of experiments good and a certain number of them provided in the parameter.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>np.ndarray</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="selfdist_toolkit.data_tools.analysis.is_experiment_good">
+<span class="sig-prename descclassname"><span class="pre">selfdist_toolkit.data_tools.analysis.</span></span><span class="sig-name descname"><span class="pre">is_experiment_good</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">aid</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">min_number_molecules</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">min_number_positive_percentage</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">contains_true</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">path_data</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">'data/'</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">bool</span></span></span><a class="headerlink" href="#selfdist_toolkit.data_tools.analysis.is_experiment_good" title="Permalink to this definition"></a></dt>
+<dd><p>Function that determines whether an experiment can be considered good in the sense of it fulfilling a few
+requirements:
+- have at least &lt;param&gt; molecules tested
+- have at least &lt;param controlled&gt; active molecules
+- have at least a &lt;param controlled&gt; percentage of active molecules</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>aid</strong> (<em>int</em>) – Experiment to test</p></li>
+<li><p><strong>min_number_molecules</strong> (<em>int</em>) – Number of minimum molecules an experiment needs to be considered good</p></li>
+<li><p><strong>min_number_positive_percentage</strong> (<em>float</em>) – Percentage of positive molecules an experiments needs to be considered good if the parameter contains_true is
+set to true</p></li>
+<li><p><strong>contains_true</strong> (<em>bool</em>) – Parameter that controls if it should be checked whether there are active molecules and how many of them</p></li>
+<li><p><strong>path_data</strong> (<em>str</em><em>, </em><em>optional</em>) – Path to data folder</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Truth value if experiment is considered good with these settings</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>bool</p>
+</dd>
+</dl>
+</dd></dl>
+
+</section>
+<section id="module-selfdist_toolkit.data_tools.cleaning">
+<span id="selfdist-toolkit-data-tools-cleaning-module"></span><h2>selfdist_toolkit.data_tools.cleaning module<a class="headerlink" href="#module-selfdist_toolkit.data_tools.cleaning" title="Permalink to this heading"></a></h2>
+<dl class="py function">
+<dt class="sig sig-object py" id="selfdist_toolkit.data_tools.cleaning.clean_numpy_data">
+<span class="sig-prename descclassname"><span class="pre">selfdist_toolkit.data_tools.cleaning.</span></span><span class="sig-name descname"><span class="pre">clean_numpy_data</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">data</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">ndarray</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">ndarray</span></span></span><a class="headerlink" href="#selfdist_toolkit.data_tools.cleaning.clean_numpy_data" title="Permalink to this definition"></a></dt>
+<dd><p>Function that cleans data by doing some operations. Currently implemented: remove zero columns (features).</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>data</strong> (<em>np.ndarray</em>) – Data which is to be cleaned column wise.</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p><strong>data</strong> – cleaned data</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>np.ndarray</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="selfdist_toolkit.data_tools.cleaning.rf_scale_clean_data">
+<span class="sig-prename descclassname"><span class="pre">selfdist_toolkit.data_tools.cleaning.</span></span><span class="sig-name descname"><span class="pre">rf_scale_clean_data</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">data</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">ndarray</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">self_dest_data</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">None</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">ndarray</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">col_remove_if_zero</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">ndarray</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">Tuple</span><span class="p"><span class="pre">[</span></span><span class="pre">ndarray</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">ndarray</span><span class="p"><span class="pre">]</span></span></span></span><a class="headerlink" href="#selfdist_toolkit.data_tools.cleaning.rf_scale_clean_data" title="Permalink to this definition"></a></dt>
+<dd><p>Function that removes nan and inf values, optionally cleans unnecessary data using the function clean_numpy_data()
+and then scales the data using sklearn StandardScaler.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>data</strong> (<em>np.ndarray</em>) – Main data to be scaled.</p></li>
+<li><p><strong>self_dest_data</strong> (<em>Union</em><em>[</em><em>None</em><em>, </em><em>np.ndarray</em><em>]</em><em>, </em><em>optional</em>) – Auxiliary data such as self distillation data to be cleaned and scaled simultaneously to produce uniformly
+preprocessed data. Default None.</p></li>
+<li><p><strong>col_remove_if_zero</strong> (<em>bool</em><em>, </em><em>optional</em>) – Parameter to control whether the function clean_numpy_data(…) should be applied to the data as well or not.
+Default: False.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p><ul class="simple">
+<li><p><strong>data</strong> (<em>np.ndarray</em>) – Processed data</p></li>
+<li><p><strong>self_dest_data</strong> (<em>np.ndarray, optional</em>) – Processed self_dest_data if supplied in parameter.</p></li>
+</ul>
+</p>
+</dd>
+</dl>
+</dd></dl>
+
+</section>
+<section id="module-selfdist_toolkit.data_tools.loading">
+<span id="selfdist-toolkit-data-tools-loading-module"></span><h2>selfdist_toolkit.data_tools.loading module<a class="headerlink" href="#module-selfdist_toolkit.data_tools.loading" title="Permalink to this heading"></a></h2>
+<dl class="py function">
+<dt class="sig sig-object py" id="selfdist_toolkit.data_tools.loading.load_chem_desc_data">
+<span class="sig-prename descclassname"><span class="pre">selfdist_toolkit.data_tools.loading.</span></span><span class="sig-name descname"><span class="pre">load_chem_desc_data</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">aid</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">path_data</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">'data/'</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Tuple</span><span class="p"><span class="pre">[</span></span><span class="pre">ndarray</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">ndarray</span><span class="p"><span class="pre">]</span></span></span></span><a class="headerlink" href="#selfdist_toolkit.data_tools.loading.load_chem_desc_data" title="Permalink to this definition"></a></dt>
+<dd><p>Function that loads the chemical descriptor dataset for the provided experiment (id). Also cleans the data of
+repetitive or unnecessary data.
+Addition: due to timing reasons the precomputed results will be saved and loaded if possible.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>aid</strong> (<em>int</em>) – Experiment id for which the data is to be fetched</p></li>
+<li><p><strong>path_data</strong> (<em>str</em><em>, </em><em>optional</em>) – Path to data folder</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p><ul class="simple">
+<li><p><em>np.ndarray</em> – chemical descriptor data</p></li>
+<li><p><em>np.ndarray</em> – labels of the data (0 for inactive, 1 for active)</p></li>
+</ul>
+</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="selfdist_toolkit.data_tools.loading.load_fingerprint_data">
+<span class="sig-prename descclassname"><span class="pre">selfdist_toolkit.data_tools.loading.</span></span><span class="sig-name descname"><span class="pre">load_fingerprint_data</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">aid</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">path_data</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">'data/'</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Tuple</span><span class="p"><span class="pre">[</span></span><span class="pre">ndarray</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">ndarray</span><span class="p"><span class="pre">]</span></span></span></span><a class="headerlink" href="#selfdist_toolkit.data_tools.loading.load_fingerprint_data" title="Permalink to this definition"></a></dt>
+<dd><p>Function that loads the Morgan Fingerprint dataset for the provided experiment (id). Also cleans the data of
+repetitive or unnecessary data.
+Addition: due to timing reasons the precomputed results will be saved and loaded if possible.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>aid</strong> (<em>int</em>) – Experiment id for which the data is to be fetched</p></li>
+<li><p><strong>path_data</strong> (<em>str</em><em>, </em><em>optional</em>) – Path to data folder</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p><ul class="simple">
+<li><p><em>np.ndarray</em> – chemical descriptor data</p></li>
+<li><p><em>np.ndarray</em> – labels of the data (0 for inactive, 1 for active)</p></li>
+</ul>
+</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="selfdist_toolkit.data_tools.loading.load_pure_data">
+<span class="sig-prename descclassname"><span class="pre">selfdist_toolkit.data_tools.loading.</span></span><span class="sig-name descname"><span class="pre">load_pure_data</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">aid_to_load</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">path_data</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">'data/'</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">DataFrame</span></span></span><a class="headerlink" href="#selfdist_toolkit.data_tools.loading.load_pure_data" title="Permalink to this definition"></a></dt>
+<dd><p>Function that loads ‘pure’ data for the provided experiment (id) that was stored in a separate file in the
+preprocessing. Outputs an error if the file is not present - either because id is invalid or the preprocessing
+has not yet been run.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>aid_to_load</strong> (<em>int</em>) – experiment id which data is to be loaded</p></li>
+<li><p><strong>path_data</strong> (<em>str</em><em>, </em><em>optional</em>) – Path to data folder.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>DataFrame containing the data for the experiment.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>pd.DataFrame</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="selfdist_toolkit.data_tools.loading.preload_chem_data_all">
+<span class="sig-prename descclassname"><span class="pre">selfdist_toolkit.data_tools.loading.</span></span><span class="sig-name descname"><span class="pre">preload_chem_data_all</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">aid_list</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">ndarray</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">path_data</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">'data/'</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="headerlink" href="#selfdist_toolkit.data_tools.loading.preload_chem_data_all" title="Permalink to this definition"></a></dt>
+<dd><p>Function preloads all the chemical descriptor data and makes sure it is written to disk beforehand to speed up
+further computation.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>aid_list</strong> (<em>np.ndarray</em>) – list of experiment ids to preload</p></li>
+<li><p><strong>path_data</strong> (<em>str</em><em>, </em><em>optional</em>) – path of data folder</p></li>
+</ul>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>Nothing</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="selfdist_toolkit.data_tools.loading.preload_fingerprint_data_all">
+<span class="sig-prename descclassname"><span class="pre">selfdist_toolkit.data_tools.loading.</span></span><span class="sig-name descname"><span class="pre">preload_fingerprint_data_all</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">aid_list</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">ndarray</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">path_data</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">'data/'</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="headerlink" href="#selfdist_toolkit.data_tools.loading.preload_fingerprint_data_all" title="Permalink to this definition"></a></dt>
+<dd><p>Function preloads all the fingerprint data and makes sure it is written to disk beforehand to speed up further
+computation.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>aid_list</strong> (<em>np.ndarray</em>) – list of experiment ids to preload</p></li>
+<li><p><strong>path_data</strong> (<em>str</em><em>, </em><em>optional</em>) – path of data folder</p></li>
+</ul>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>Nothing</p>
+</dd>
+</dl>
+</dd></dl>
+
+</section>
+<section id="module-selfdist_toolkit.data_tools.preprocessing">
+<span id="selfdist-toolkit-data-tools-preprocessing-module"></span><h2>selfdist_toolkit.data_tools.preprocessing module<a class="headerlink" href="#module-selfdist_toolkit.data_tools.preprocessing" title="Permalink to this heading"></a></h2>
+<dl class="py function">
+<dt class="sig sig-object py" id="selfdist_toolkit.data_tools.preprocessing.check_data_file">
+<span class="sig-prename descclassname"><span class="pre">selfdist_toolkit.data_tools.preprocessing.</span></span><span class="sig-name descname"><span class="pre">check_data_file</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">path_main_dataset</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">weburl</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">'https://ucloud.univie.ac.at/index.php/s/qRoEjX26GVH5jnx/download?path=%2F&amp;files=df_assay_entries.csv&amp;downloadStartSecret=0t4mnkxbz8am'</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="headerlink" href="#selfdist_toolkit.data_tools.preprocessing.check_data_file" title="Permalink to this definition"></a></dt>
+<dd><p>Function aims to check whether the main data file which is required for other opertions has already been loaded.
+If it is not loaded yet, proceed with a download from ucloud.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>path_main_dataset</strong> (<em>str</em>) – path where the main dataset should be (put)</p></li>
+<li><p><strong>weburl</strong> (<em>str</em><em>, </em><em>optional</em>) – Link from which the file could be fetched it is not yet present at the specified path. Must be a link that
+automatically triggers the download.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Nothing</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>None</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="selfdist_toolkit.data_tools.preprocessing.experiment_preprocess">
+<span class="sig-prename descclassname"><span class="pre">selfdist_toolkit.data_tools.preprocessing.</span></span><span class="sig-name descname"><span class="pre">experiment_preprocess</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">path_main_dataset</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">'data/df_assay_entries.csv'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">path_data</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">'data/'</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">ndarray</span></span></span><a class="headerlink" href="#selfdist_toolkit.data_tools.preprocessing.experiment_preprocess" title="Permalink to this definition"></a></dt>
+<dd><p>Function that aims to preprocess the large data in a way that allows to only load specific experiment wise
+data into the program so that the program runs faster and with less memory.</p>
+<p>Splits data into parts related to experiments and also writes a numpy files containing all unique SMILE strings
+for later usage.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>path_main_dataset</strong> (<em>str</em><em>, </em><em>optional</em>) – Path where the main dataset is stored.</p></li>
+<li><p><strong>path_data</strong> (<em>str</em><em>, </em><em>optional</em>) – Path where the main data folder is placed.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Unique assay ids of the dataset</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>np.ndarray</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="selfdist_toolkit.data_tools.preprocessing.experiment_whole_preprocess">
+<span class="sig-prename descclassname"><span class="pre">selfdist_toolkit.data_tools.preprocessing.</span></span><span class="sig-name descname"><span class="pre">experiment_whole_preprocess</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">path_main_dataset</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">'data/df_assay_entries.csv'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">path_data</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">'data/'</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">ndarray</span></span></span><a class="headerlink" href="#selfdist_toolkit.data_tools.preprocessing.experiment_whole_preprocess" title="Permalink to this definition"></a></dt>
+<dd><p>Function that calls all subfunctions related to dataset loading and preprocessing in a manner that allows the
+interpreter to use at least memory as possible but possibly incurring multiple loadings of the dataset from disk.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>path_main_dataset</strong> (<em>str</em><em>, </em><em>optional</em>) – Path to main dataset.</p></li>
+<li><p><strong>path_data</strong> (<em>str</em><em>, </em><em>optional</em>) – Path to data folder.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Numpy array of unique assay ids (aid) = experiment identifiers</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>np.ndarray</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="selfdist_toolkit.data_tools.preprocessing.generate_chem_smiles">
+<span class="sig-prename descclassname"><span class="pre">selfdist_toolkit.data_tools.preprocessing.</span></span><span class="sig-name descname"><span class="pre">generate_chem_smiles</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">path_main_dataset</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">'data/df_assay_entries.csv'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">path_data</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">'data/'</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="headerlink" href="#selfdist_toolkit.data_tools.preprocessing.generate_chem_smiles" title="Permalink to this definition"></a></dt>
+<dd><p>Function that if not already computed loads the dataset, identifies all unique molecules and generates chemical
+descriptor data for them using the Descriptors from rdkit from descList. The result data is written to a numpy
+file containing the data and a mapping file which maps entries from the data file to their actual molecule id(cid).</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>path_main_dataset</strong> (<em>str</em><em>, </em><em>optional</em>) – Path to main dataset.</p></li>
+<li><p><strong>path_data</strong> (<em>str</em><em>, </em><em>optional</em>) – Path to data folder.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>Nothing</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="selfdist_toolkit.data_tools.preprocessing.generate_chem_smiles_parallel">
+<span class="sig-prename descclassname"><span class="pre">selfdist_toolkit.data_tools.preprocessing.</span></span><span class="sig-name descname"><span class="pre">generate_chem_smiles_parallel</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">path_main_dataset</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">'data/df_assay_entries.csv'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">path_data</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">'data/'</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="headerlink" href="#selfdist_toolkit.data_tools.preprocessing.generate_chem_smiles_parallel" title="Permalink to this definition"></a></dt>
+<dd><p>Function that if not already computed loads the dataset, identifies all unique molecules and generates chemical
+descriptor data for them using the Descriptors from rdkit from descList. The result data is written to a numpy
+file containing the data and a mapping file which maps entries from the data file to their actual molecule id(cid).
+Difference from other function: works in parallel trying to utilize all CPU cores.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>path_main_dataset</strong> (<em>str</em><em>, </em><em>optional</em>) – Path to main dataset.</p></li>
+<li><p><strong>path_data</strong> (<em>str</em><em>, </em><em>optional</em>) – Path to data folder.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>Nothing</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="selfdist_toolkit.data_tools.preprocessing.generate_fingerprints">
+<span class="sig-prename descclassname"><span class="pre">selfdist_toolkit.data_tools.preprocessing.</span></span><span class="sig-name descname"><span class="pre">generate_fingerprints</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">path_main_dataset</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">'data/df_assay_entries.csv'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">path_data</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">'data/'</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="headerlink" href="#selfdist_toolkit.data_tools.preprocessing.generate_fingerprints" title="Permalink to this definition"></a></dt>
+<dd><p>Function that if not already computed loads the dataset, identifies all unique molecules and generates the Morgan
+Fingerprint for them using the rdkit. The result data is written to a numpy file containing the data and a mapping
+file which maps entries from the data file to their actual molecule id(cid).</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>path_main_dataset</strong> (<em>str</em><em>, </em><em>optional</em>) – Path to main dataset.</p></li>
+<li><p><strong>path_data</strong> (<em>str</em><em>, </em><em>optional</em>) – Path to data folder.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>Nothing</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="selfdist_toolkit.data_tools.preprocessing.generate_fingerprints_parallel">
+<span class="sig-prename descclassname"><span class="pre">selfdist_toolkit.data_tools.preprocessing.</span></span><span class="sig-name descname"><span class="pre">generate_fingerprints_parallel</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">path_main_dataset</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">'data/df_assay_entries.csv'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">path_data</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">'data/'</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="headerlink" href="#selfdist_toolkit.data_tools.preprocessing.generate_fingerprints_parallel" title="Permalink to this definition"></a></dt>
+<dd><p>Function that if not already computed loads the dataset, identifies all unique molecules and generates the Morgan
+Fingerprint for them using the rdkit. The result data is written to a numpy file containing the data and a mapping
+file which maps entries from the data file to their actual molecule id(cid).
+Difference from other function: works in parallel trying to utilize all cpu cores.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>path_main_dataset</strong> (<em>str</em><em>, </em><em>optional</em>) – Path to main dataset.</p></li>
+<li><p><strong>path_data</strong> (<em>str</em><em>, </em><em>optional</em>) – Path to data folder.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>Nothing</p>
+</dd>
+</dl>
+</dd></dl>
+
+</section>
+<section id="module-selfdist_toolkit.data_tools.sd_data_utils">
+<span id="selfdist-toolkit-data-tools-sd-data-utils-module"></span><h2>selfdist_toolkit.data_tools.sd_data_utils module<a class="headerlink" href="#module-selfdist_toolkit.data_tools.sd_data_utils" title="Permalink to this heading"></a></h2>
+<dl class="py function">
+<dt class="sig sig-object py" id="selfdist_toolkit.data_tools.sd_data_utils.generate_self_distillation_elements">
+<span class="sig-prename descclassname"><span class="pre">selfdist_toolkit.data_tools.sd_data_utils.</span></span><span class="sig-name descname"><span class="pre">generate_self_distillation_elements</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">aid</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">number_to_generate</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">path_data</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">'data/'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">seed</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">131313</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">data_gen_method</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">'chem-desc'</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">ndarray</span></span></span><a class="headerlink" href="#selfdist_toolkit.data_tools.sd_data_utils.generate_self_distillation_elements" title="Permalink to this definition"></a></dt>
+<dd><p>Takes some random molecules which are not yet in the experiment scope (with the id provided) and load fingerprint or
+chemical descriptor data, then return it.
+Note: using other molecules as else it would need be removed from the original dataset (which may already be very
+small and hence it would not be beneficial to remove further elements)</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>aid</strong> (<em>int</em>) – Experiment id for which self distillation elements are to be generated</p></li>
+<li><p><strong>number_to_generate</strong> (<em>int</em>) – number of elements to fetch for self distillation</p></li>
+<li><p><strong>path_data</strong> (<em>str</em><em>, </em><em>optional</em>) – Path to data folder</p></li>
+<li><p><strong>seed</strong> (<em>int</em>) – Seed to set; by default set to 131313, if None, then no seed will be set. Seed recommended for reproducability.</p></li>
+<li><p><strong>data_gen_method</strong> (<em>str</em>) – Defines which data mode is active: either ‘fingerprint’ or ‘chem-desc’ for corresponding data type.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p><strong>molecule_data</strong> – Fetched self distillation data</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>np.ndarray</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="selfdist_toolkit.data_tools.sd_data_utils.merge_data_self_dist_data">
+<span class="sig-prename descclassname"><span class="pre">selfdist_toolkit.data_tools.sd_data_utils.</span></span><span class="sig-name descname"><span class="pre">merge_data_self_dist_data</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">data</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">ndarray</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">sd_data</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">ndarray</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">label</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">ndarray</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">sd_label</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">ndarray</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Tuple</span><span class="p"><span class="pre">[</span></span><span class="pre">ndarray</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">ndarray</span><span class="p"><span class="pre">]</span></span></span></span><a class="headerlink" href="#selfdist_toolkit.data_tools.sd_data_utils.merge_data_self_dist_data" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+</section>
+<section id="module-selfdist_toolkit.data_tools">
+<span id="module-contents"></span><h2>Module contents<a class="headerlink" href="#module-selfdist_toolkit.data_tools" title="Permalink to this heading"></a></h2>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="selfdist_toolkit.html" class="btn btn-neutral float-left" title="selfdist_toolkit package" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="selfdist_toolkit.pyg_tools.html" class="btn btn-neutral float-right" title="selfdist_toolkit.pyg_tools package" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2023, Johannes P. Urban, B.Sc..</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

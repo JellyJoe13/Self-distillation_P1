@@ -1,0 +1,317 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>selfdist_toolkit.randomforest_tools package &mdash; Self-distillation 1.0.0 documentation</title>
+      <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script src="_static/jquery.js"></script>
+        <script src="_static/_sphinx_javascript_frameworks_compat.js"></script>
+        <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+        <script src="_static/doctools.js"></script>
+        <script src="_static/sphinx_highlight.js"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="prev" title="selfdist_toolkit.pyg_tools package" href="selfdist_toolkit.pyg_tools.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="index.html" class="icon icon-home">
+            Self-distillation
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="modules.html">selfdist_toolkit</a><ul class="current">
+<li class="toctree-l2 current"><a class="reference internal" href="selfdist_toolkit.html">selfdist_toolkit package</a><ul class="current">
+<li class="toctree-l3 current"><a class="reference internal" href="selfdist_toolkit.html#subpackages">Subpackages</a><ul class="current">
+<li class="toctree-l4"><a class="reference internal" href="selfdist_toolkit.data_tools.html">selfdist_toolkit.data_tools package</a></li>
+<li class="toctree-l4"><a class="reference internal" href="selfdist_toolkit.pyg_tools.html">selfdist_toolkit.pyg_tools package</a></li>
+<li class="toctree-l4 current"><a class="current reference internal" href="#">selfdist_toolkit.randomforest_tools package</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="selfdist_toolkit.html#module-selfdist_toolkit">Module contents</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">Self-distillation</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="modules.html">selfdist_toolkit</a></li>
+          <li class="breadcrumb-item"><a href="selfdist_toolkit.html">selfdist_toolkit package</a></li>
+      <li class="breadcrumb-item active">selfdist_toolkit.randomforest_tools package</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="_sources/selfdist_toolkit.randomforest_tools.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="selfdist-toolkit-randomforest-tools-package">
+<h1>selfdist_toolkit.randomforest_tools package<a class="headerlink" href="#selfdist-toolkit-randomforest-tools-package" title="Permalink to this heading"></a></h1>
+<section id="submodules">
+<h2>Submodules<a class="headerlink" href="#submodules" title="Permalink to this heading"></a></h2>
+</section>
+<section id="module-selfdist_toolkit.randomforest_tools.creation">
+<span id="selfdist-toolkit-randomforest-tools-creation-module"></span><h2>selfdist_toolkit.randomforest_tools.creation module<a class="headerlink" href="#module-selfdist_toolkit.randomforest_tools.creation" title="Permalink to this heading"></a></h2>
+<dl class="py function">
+<dt class="sig sig-object py" id="selfdist_toolkit.randomforest_tools.creation.generate_default_rf">
+<span class="sig-prename descclassname"><span class="pre">selfdist_toolkit.randomforest_tools.creation.</span></span><span class="sig-name descname"><span class="pre">generate_default_rf</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">random_state</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">131313</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">RandomForestClassifier</span></span></span><a class="headerlink" href="#selfdist_toolkit.randomforest_tools.creation.generate_default_rf" title="Permalink to this definition"></a></dt>
+<dd><p>Function that returns the default Random Forest to be used.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>random_state</strong> (<em>int</em><em>, </em><em>optional</em>) – random state for initialization of the random forest classifier</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>sklearn.ensemble.RandomForestClassifier</p>
+</dd>
+</dl>
+</dd></dl>
+
+</section>
+<section id="module-selfdist_toolkit.randomforest_tools.evaluation">
+<span id="selfdist-toolkit-randomforest-tools-evaluation-module"></span><h2>selfdist_toolkit.randomforest_tools.evaluation module<a class="headerlink" href="#module-selfdist_toolkit.randomforest_tools.evaluation" title="Permalink to this heading"></a></h2>
+<dl class="py function">
+<dt class="sig sig-object py" id="selfdist_toolkit.randomforest_tools.evaluation.evaluate_assays_rf">
+<span class="sig-prename descclassname"><span class="pre">selfdist_toolkit.randomforest_tools.evaluation.</span></span><span class="sig-name descname"><span class="pre">evaluate_assays_rf</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">perc_sd</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">mode</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">'chem-desc'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">data_folder</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">'data/'</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">DataFrame</span></span></span><a class="headerlink" href="#selfdist_toolkit.randomforest_tools.evaluation.evaluate_assays_rf" title="Permalink to this definition"></a></dt>
+<dd><p>Function that executes the random forest testing from the function execute_sd_rf_test_simplified(…) for all aids.
+It calculates the teacher and student accuracies, temporarily stores them in a json file for when the process
+crashes to not loose progress. Puts all measured results into pandas Dataframe, which it saves in the
+results/random_forest/experiments_check/ folder and also returns it.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>perc_sd</strong> (<em>float</em>) – Percentage of self distillation elements to generate in proportion to the size of the data for the experiment</p></li>
+<li><p><strong>mode</strong> (<em>str</em><em>, </em><em>optional</em>) – Data mode, either chem-desc or fingerprint</p></li>
+<li><p><strong>data_folder</strong> (<em>str</em><em>, </em><em>optional</em>) – Folder where the data is stored. Usually data/</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p><strong>df</strong> – DataFrame containing the accuracies measured in the function</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>pd.DataFrame</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="selfdist_toolkit.randomforest_tools.evaluation.helper_merge_accuracy_dicts">
+<span class="sig-prename descclassname"><span class="pre">selfdist_toolkit.randomforest_tools.evaluation.</span></span><span class="sig-name descname"><span class="pre">helper_merge_accuracy_dicts</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">aid</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">teacher</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Dict</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">float</span><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">student</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Dict</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">float</span><span class="p"><span class="pre">]</span></span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Dict</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">float</span><span class="p"><span class="pre">]</span></span></span></span><a class="headerlink" href="#selfdist_toolkit.randomforest_tools.evaluation.helper_merge_accuracy_dicts" title="Permalink to this definition"></a></dt>
+<dd><p>Helper function that merges two accuracy dicts (used by random forest testing methods) and generates a single dict
+which can then be dumped to a file more easily or used to create a pandas DataFrame.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>aid</strong> (<em>int</em>) – Experiment id (information to put in the dict)</p></li>
+<li><p><strong>teacher</strong> (<em>Dict</em><em>[</em><em>str</em><em>, </em><em>float</em><em>]</em>) – Measured accuracies of the teacher</p></li>
+<li><p><strong>student</strong> (<em>Dict</em><em>[</em><em>str</em><em>, </em><em>float</em><em>]</em>) – Measured accuracy of the student</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p><strong>out</strong> – Merged dictionary</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><em>Dict</em>[str, float]</p>
+</dd>
+</dl>
+</dd></dl>
+
+</section>
+<section id="module-selfdist_toolkit.randomforest_tools.normal">
+<span id="selfdist-toolkit-randomforest-tools-normal-module"></span><h2>selfdist_toolkit.randomforest_tools.normal module<a class="headerlink" href="#module-selfdist_toolkit.randomforest_tools.normal" title="Permalink to this heading"></a></h2>
+<dl class="py function">
+<dt class="sig sig-object py" id="selfdist_toolkit.randomforest_tools.normal.execute_normal_rf_test">
+<span class="sig-prename descclassname"><span class="pre">selfdist_toolkit.randomforest_tools.normal.</span></span><span class="sig-name descname"><span class="pre">execute_normal_rf_test</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">rf</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">RandomForestClassifier</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">aid</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">mode</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">'chem-desc'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">random_state</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">131313</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Dict</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">float</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></span></span><a class="headerlink" href="#selfdist_toolkit.randomforest_tools.normal.execute_normal_rf_test" title="Permalink to this definition"></a></dt>
+<dd><p>Function that executes a random forest test for non self distillation for one experiment with a data mode
+(fingerprint or chem desc data)</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>rf</strong> (<em>RandomForestClassifier</em>) – Random Forest to use for the testing process</p></li>
+<li><p><strong>aid</strong> (<em>int</em>) – Experiment to use for the testing process</p></li>
+<li><p><strong>mode</strong> (<em>str</em><em>, </em><em>optional</em>) – Data Mode. Either fingerprint or chem-desc</p></li>
+<li><p><strong>random_state</strong> (<em>int</em><em>, </em><em>optional</em>) – Random state to use for random-influenced functions</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p><strong>accuracy_storage</strong> – Dict in which the accuracy scores are to be collected. Stores accuracy, balanced accuracy, roc, precision,
+recall</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><em>Dict</em>[str, <em>List</em>[float]]</p>
+</dd>
+</dl>
+</dd></dl>
+
+</section>
+<section id="module-selfdist_toolkit.randomforest_tools.rf_analysis">
+<span id="selfdist-toolkit-randomforest-tools-rf-analysis-module"></span><h2>selfdist_toolkit.randomforest_tools.rf_analysis module<a class="headerlink" href="#module-selfdist_toolkit.randomforest_tools.rf_analysis" title="Permalink to this heading"></a></h2>
+<dl class="py function">
+<dt class="sig sig-object py" id="selfdist_toolkit.randomforest_tools.rf_analysis.compare_accuracy_dict">
+<span class="sig-prename descclassname"><span class="pre">selfdist_toolkit.randomforest_tools.rf_analysis.</span></span><span class="sig-name descname"><span class="pre">compare_accuracy_dict</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">normal</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Dict</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">float</span><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">sd</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Dict</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">float</span><span class="p"><span class="pre">]</span></span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Dict</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">float</span><span class="p"><span class="pre">]</span></span></span></span><a class="headerlink" href="#selfdist_toolkit.randomforest_tools.rf_analysis.compare_accuracy_dict" title="Permalink to this definition"></a></dt>
+<dd><p>Function that computes the difference in accuracy between the two input dicts.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>normal</strong> (<em>Dict</em><em>[</em><em>str</em><em>, </em><em>float</em><em>]</em>) – Dictionary containing the accuracy scores of the normal test</p></li>
+<li><p><strong>sd</strong> (<em>Dict</em><em>[</em><em>str</em><em>, </em><em>float</em><em>]</em>) – Dictionary containing the accuracy scores of the self distillation test</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p><strong>dict_diff</strong> – Dictionary containing the difference in accuracy scores between the input dictionaries</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><em>Dict</em>[str, float]</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="selfdist_toolkit.randomforest_tools.rf_analysis.convert_acc_dict">
+<span class="sig-prename descclassname"><span class="pre">selfdist_toolkit.randomforest_tools.rf_analysis.</span></span><span class="sig-name descname"><span class="pre">convert_acc_dict</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">acc_dict</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Dict</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">float</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Dict</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">float</span><span class="p"><span class="pre">]</span></span></span></span><a class="headerlink" href="#selfdist_toolkit.randomforest_tools.rf_analysis.convert_acc_dict" title="Permalink to this definition"></a></dt>
+<dd><p>Function that computes the mean accuracy score of the measured attempts.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>acc_dict</strong> (<em>Dict</em><em>[</em><em>str</em><em>, </em><em>List</em><em>[</em><em>float</em><em>]</em><em>]</em>) – Dictionary containing lists of measured accuracy scores</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Dictionary containing the mean accuracy scores computed with this function</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><em>Dict</em>[str, float]</p>
+</dd>
+</dl>
+</dd></dl>
+
+</section>
+<section id="module-selfdist_toolkit.randomforest_tools.self_distillation">
+<span id="selfdist-toolkit-randomforest-tools-self-distillation-module"></span><h2>selfdist_toolkit.randomforest_tools.self_distillation module<a class="headerlink" href="#module-selfdist_toolkit.randomforest_tools.self_distillation" title="Permalink to this heading"></a></h2>
+<dl class="py function">
+<dt class="sig sig-object py" id="selfdist_toolkit.randomforest_tools.self_distillation.execute_sd_rf_test">
+<span class="sig-prename descclassname"><span class="pre">selfdist_toolkit.randomforest_tools.self_distillation.</span></span><span class="sig-name descname"><span class="pre">execute_sd_rf_test</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">rf_teacher</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">RandomForestClassifier</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">rf_student</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">RandomForestClassifier</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">aid</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">mode</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">'chem-desc'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">random_state</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">131313</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">verbose</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Dict</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">float</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></span></span><a class="headerlink" href="#selfdist_toolkit.randomforest_tools.self_distillation.execute_sd_rf_test" title="Permalink to this definition"></a></dt>
+<dd><p>Function that executes a random forest test for self distillation for one experiment with a data mode (fingerprint
+or chem desc data)</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>verbose</strong> (<em>bool</em><em>, </em><em>optional</em>) – Determines whether tqdm should be enabled or not.</p></li>
+<li><p><strong>rf_teacher</strong> (<em>RandomForestClassifier</em>) – Teacher Random Forest</p></li>
+<li><p><strong>rf_student</strong> (<em>RandomForestClassifier</em>) – Student Random Forest</p></li>
+<li><p><strong>aid</strong> (<em>int</em>) – Experiment to use for the testing process</p></li>
+<li><p><strong>mode</strong> (<em>str</em><em>, </em><em>optional</em>) – Data Mode. Either fingerprint or chem-desc</p></li>
+<li><p><strong>random_state</strong> (<em>int</em><em>, </em><em>optional</em>) – Random state to use for random-influenced functions</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p><ul class="simple">
+<li><p><strong>normal_accuracy_storage</strong> (<em>typing.Dict[str, typing.List[float]]</em>) – Dict in which the accuracy scores of the non self distillation approach are to be collected. Stores accuracy,
+balanced accuracy, roc, precision, recall</p></li>
+<li><p><strong>dist_accuracy_storage</strong> (<em>typing.Dict[str, typing.List[float]]</em>) – Dict in which the accuracy scores of the self distillation approach are to be collected. Stores accuracy,
+balanced accuracy, roc, precision, recall</p></li>
+</ul>
+</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="selfdist_toolkit.randomforest_tools.self_distillation.execute_sd_rf_test_simplified">
+<span class="sig-prename descclassname"><span class="pre">selfdist_toolkit.randomforest_tools.self_distillation.</span></span><span class="sig-name descname"><span class="pre">execute_sd_rf_test_simplified</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">aid</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">perc_sd</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">0.2</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">mode</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">'chem-desc'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">random_state</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">131313</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Dict</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">float</span><span class="p"><span class="pre">]</span></span></span></span><a class="headerlink" href="#selfdist_toolkit.randomforest_tools.self_distillation.execute_sd_rf_test_simplified" title="Permalink to this definition"></a></dt>
+<dd><p>Function that is used to get the accuracy of a random forest classifier when using self distillation compared to the
+normal random forest training. Simplified because it does not use cross validation but simply splits the dataset
+into a 80:20 ratio (note that this ration is determined by the original data size and not the size including the
+self distillation based additional elements.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>aid</strong> (<em>int</em>) – Experiment id for which to evaluate the rf and self distillation</p></li>
+<li><p><strong>perc_sd</strong> (<em>float</em><em>, </em><em>optional</em>) – percentage determining how many self distillation data is to be generated and added for the student model</p></li>
+<li><p><strong>mode</strong> (<em>str</em><em>, </em><em>optional</em>) – data mode, either chem-desc or fingerprint</p></li>
+<li><p><strong>random_state</strong> (<em>int</em><em>, </em><em>optional</em>) – random seed to use for the random influenced functions</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p><ul class="simple">
+<li><p><strong>teacher_accuracy_dict</strong> (<em>typing.Dict[str, float]</em>) – Dictionary storing the accuracy scores of the teacher model - without self distillation</p></li>
+<li><p><strong>student_accuracy_dict</strong> (<em>typing.Dict[str, float]</em>) – Dictionary storing the accuracy scores of the student model - with self distillation</p></li>
+</ul>
+</p>
+</dd>
+</dl>
+</dd></dl>
+
+</section>
+<section id="module-selfdist_toolkit.randomforest_tools">
+<span id="module-contents"></span><h2>Module contents<a class="headerlink" href="#module-selfdist_toolkit.randomforest_tools" title="Permalink to this heading"></a></h2>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="selfdist_toolkit.pyg_tools.html" class="btn btn-neutral float-left" title="selfdist_toolkit.pyg_tools package" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2023, Johannes P. Urban, B.Sc..</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>
