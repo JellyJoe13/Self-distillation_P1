@@ -1,0 +1,561 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>selfdist_toolkit.pyg_tools package &mdash; Self-distillation 1.0.0 documentation</title>
+      <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script src="_static/jquery.js"></script>
+        <script src="_static/_sphinx_javascript_frameworks_compat.js"></script>
+        <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+        <script src="_static/doctools.js"></script>
+        <script src="_static/sphinx_highlight.js"></script>
+        <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="selfdist_toolkit.randomforest_tools package" href="selfdist_toolkit.randomforest_tools.html" />
+    <link rel="prev" title="selfdist_toolkit.data_tools package" href="selfdist_toolkit.data_tools.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="index.html" class="icon icon-home">
+            Self-distillation
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="modules.html">selfdist_toolkit</a><ul class="current">
+<li class="toctree-l2 current"><a class="reference internal" href="selfdist_toolkit.html">selfdist_toolkit package</a><ul class="current">
+<li class="toctree-l3 current"><a class="reference internal" href="selfdist_toolkit.html#subpackages">Subpackages</a><ul class="current">
+<li class="toctree-l4"><a class="reference internal" href="selfdist_toolkit.data_tools.html">selfdist_toolkit.data_tools package</a></li>
+<li class="toctree-l4 current"><a class="current reference internal" href="#">selfdist_toolkit.pyg_tools package</a></li>
+<li class="toctree-l4"><a class="reference internal" href="selfdist_toolkit.randomforest_tools.html">selfdist_toolkit.randomforest_tools package</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="selfdist_toolkit.html#module-selfdist_toolkit">Module contents</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">Self-distillation</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="modules.html">selfdist_toolkit</a></li>
+          <li class="breadcrumb-item"><a href="selfdist_toolkit.html">selfdist_toolkit package</a></li>
+      <li class="breadcrumb-item active">selfdist_toolkit.pyg_tools package</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="_sources/selfdist_toolkit.pyg_tools.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="selfdist-toolkit-pyg-tools-package">
+<h1>selfdist_toolkit.pyg_tools package<a class="headerlink" href="#selfdist-toolkit-pyg-tools-package" title="Permalink to this heading"></a></h1>
+<section id="submodules">
+<h2>Submodules<a class="headerlink" href="#submodules" title="Permalink to this heading"></a></h2>
+</section>
+<section id="module-selfdist_toolkit.pyg_tools.GIN_nn">
+<span id="selfdist-toolkit-pyg-tools-gin-nn-module"></span><h2>selfdist_toolkit.pyg_tools.GIN_nn module<a class="headerlink" href="#module-selfdist_toolkit.pyg_tools.GIN_nn" title="Permalink to this heading"></a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="selfdist_toolkit.pyg_tools.GIN_nn.GIN_basic">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">selfdist_toolkit.pyg_tools.GIN_nn.</span></span><span class="sig-name descname"><span class="pre">GIN_basic</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">num_classes</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">num_layer</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">5</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">drop_ratio</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">0.5</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">embedding_dim</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">300</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">atom_features</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">9</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">bond_features</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">3</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">jk</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">'last'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">residual</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#selfdist_toolkit.pyg_tools.GIN_nn.GIN_basic" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">Module</span></code></p>
+<p>Class implementing a GIN Convolution graph wise prediction neural network. The implementation and design of this
+neural network is based on the publicly available code from Open Graph Benchmark with the code available via
+<a class="reference external" href="https://github.com/snap-stanford/ogb/blob/master/examples/graphproppred/">https://github.com/snap-stanford/ogb/blob/master/examples/graphproppred/</a></p>
+<dl class="py method">
+<dt class="sig sig-object py" id="selfdist_toolkit.pyg_tools.GIN_nn.GIN_basic.forward">
+<span class="sig-name descname"><span class="pre">forward</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">batched_data</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Data</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Tensor</span></span></span><a class="headerlink" href="#selfdist_toolkit.pyg_tools.GIN_nn.GIN_basic.forward" title="Permalink to this definition"></a></dt>
+<dd><p>Function that is called for training and prediction (without training). When not used for training remember to
+use the pytorch function for evaluation and maybe also the annotation for no gradient usage.
+Function takes input data in form of graphs and generates predictions for them.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>batched_data</strong> (<em>torch_geometric.data.data.Data</em>) – Graph data to use for generating the prediction</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p><strong>prediction</strong> – Prediction generated per graph of the input data.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>torch.Tensor</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="selfdist_toolkit.pyg_tools.GIN_nn.GIN_basic.training">
+<span class="sig-name descname"><span class="pre">training</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">bool</span></em><a class="headerlink" href="#selfdist_toolkit.pyg_tools.GIN_nn.GIN_basic.training" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+</section>
+<section id="module-selfdist_toolkit.pyg_tools.accuracy">
+<span id="selfdist-toolkit-pyg-tools-accuracy-module"></span><h2>selfdist_toolkit.pyg_tools.accuracy module<a class="headerlink" href="#module-selfdist_toolkit.pyg_tools.accuracy" title="Permalink to this heading"></a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="selfdist_toolkit.pyg_tools.accuracy.AccuracyStorage">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">selfdist_toolkit.pyg_tools.accuracy.</span></span><span class="sig-name descname"><span class="pre">AccuracyStorage</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">accuracy</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">balanced_accuracy</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">roc_score</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">precision</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">recall</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">mcc</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">0</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#selfdist_toolkit.pyg_tools.accuracy.AccuracyStorage" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<dl class="py method">
+<dt class="sig sig-object py" id="selfdist_toolkit.pyg_tools.accuracy.AccuracyStorage.to_df">
+<span class="sig-name descname"><span class="pre">to_df</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">index</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#selfdist_toolkit.pyg_tools.accuracy.AccuracyStorage.to_df" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="selfdist_toolkit.pyg_tools.accuracy.AccuracyStorage.to_dict">
+<span class="sig-name descname"><span class="pre">to_dict</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Dict</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">float</span><span class="p"><span class="pre">]</span></span></span></span><a class="headerlink" href="#selfdist_toolkit.pyg_tools.accuracy.AccuracyStorage.to_dict" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="selfdist_toolkit.pyg_tools.accuracy.calculate_accuracies_1d">
+<span class="sig-prename descclassname"><span class="pre">selfdist_toolkit.pyg_tools.accuracy.</span></span><span class="sig-name descname"><span class="pre">calculate_accuracies_1d</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">y_true</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">ndarray</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">y_pred</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">ndarray</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="#selfdist_toolkit.pyg_tools.accuracy.AccuracyStorage" title="selfdist_toolkit.pyg_tools.accuracy.AccuracyStorage"><span class="pre">AccuracyStorage</span></a></span></span><a class="headerlink" href="#selfdist_toolkit.pyg_tools.accuracy.calculate_accuracies_1d" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="selfdist_toolkit.pyg_tools.accuracy.helper_pyg_to_numpy_label">
+<span class="sig-prename descclassname"><span class="pre">selfdist_toolkit.pyg_tools.accuracy.</span></span><span class="sig-name descname"><span class="pre">helper_pyg_to_numpy_label</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">data_loader</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">DataLoader</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">correct_label</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">ndarray</span><span class="p"><span class="pre">[</span></span><span class="pre">int</span><span class="p"><span class="pre">]</span></span></span></span><a class="headerlink" href="#selfdist_toolkit.pyg_tools.accuracy.helper_pyg_to_numpy_label" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+</section>
+<section id="module-selfdist_toolkit.pyg_tools.early_stopping">
+<span id="selfdist-toolkit-pyg-tools-early-stopping-module"></span><h2>selfdist_toolkit.pyg_tools.early_stopping module<a class="headerlink" href="#module-selfdist_toolkit.pyg_tools.early_stopping" title="Permalink to this heading"></a></h2>
+<p>The content in this file is inspired by content shared in the github repository
+<a class="reference external" href="https://github.com/Bjarten/early-stopping-pytorch">https://github.com/Bjarten/early-stopping-pytorch</a>.</p>
+<dl class="py class">
+<dt class="sig sig-object py" id="selfdist_toolkit.pyg_tools.early_stopping.EarlyStopBasic">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">selfdist_toolkit.pyg_tools.early_stopping.</span></span><span class="sig-name descname"><span class="pre">EarlyStopBasic</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">min_improvement</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">num_epoch_wait</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">measurement</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#selfdist_toolkit.pyg_tools.early_stopping.EarlyStopBasic" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<dl class="py method">
+<dt class="sig sig-object py" id="selfdist_toolkit.pyg_tools.early_stopping.EarlyStopBasic.new_epoch_test_stop">
+<span class="sig-name descname"><span class="pre">new_epoch_test_stop</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">accuracy_storage</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#selfdist_toolkit.pyg_tools.accuracy.AccuracyStorage" title="selfdist_toolkit.pyg_tools.accuracy.AccuracyStorage"><span class="pre">AccuracyStorage</span></a></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">bool</span></span></span><a class="headerlink" href="#selfdist_toolkit.pyg_tools.early_stopping.EarlyStopBasic.new_epoch_test_stop" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+</section>
+<section id="module-selfdist_toolkit.pyg_tools.execution">
+<span id="selfdist-toolkit-pyg-tools-execution-module"></span><h2>selfdist_toolkit.pyg_tools.execution module<a class="headerlink" href="#module-selfdist_toolkit.pyg_tools.execution" title="Permalink to this heading"></a></h2>
+<dl class="py function">
+<dt class="sig sig-object py" id="selfdist_toolkit.pyg_tools.execution.predict">
+<span class="sig-prename descclassname"><span class="pre">selfdist_toolkit.pyg_tools.execution.</span></span><span class="sig-name descname"><span class="pre">predict</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">model</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Module</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">testing_data_loader</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">DataLoader</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">Data</span><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">device</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">reduce_to_hard_label</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">batch_size</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">verbose</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">ndarray</span><span class="p"><span class="pre">[</span></span><span class="pre">float</span><span class="p"><span class="pre">]</span></span></span></span><a class="headerlink" href="#selfdist_toolkit.pyg_tools.execution.predict" title="Permalink to this definition"></a></dt>
+<dd><p>Function that given the inputs computes the label (soft or hard) of the inputted data using the inputted model.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>verbose</strong> (<em>bool</em><em>, </em><em>optional</em>) – Decides whether tqdm progress bar is shown or not. Default: True</p></li>
+<li><p><strong>model</strong> (<em>torch.nn.Module</em>) – Model used for prediction - will not be trained</p></li>
+<li><p><strong>testing_data_loader</strong> (<em>Union</em><em>[</em><em>torch_geometric.loader.DataLoader</em><em>,</em><em>List</em><em>[</em><em>torch_geometric.data.data.Data</em><em>]</em><em>]</em>) – test data in the form of a list of pytorch geometric data objects or a data loader</p></li>
+<li><p><strong>device</strong> (<em>torch.device</em>) – device on which the neural network should act on</p></li>
+<li><p><strong>reduce_to_hard_label</strong> (<em>bool</em><em>, </em><em>optional</em>) – Controls if the output should be in the form of a single label or the actual 2-feature output containing a value
+/probability/certainty of the element being a specific class. Default: False - no reduce</p></li>
+<li><p><strong>batch_size</strong> (<em>int</em><em>, </em><em>optional</em>) – Batch size used in the Data Loader in case a List of data objects is provided instead of a DataLoader</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p><strong>prediction</strong> – Prediction with dimension either: num_graphs x 2 or num_graphs</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>np.ndarray[float]</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="selfdist_toolkit.pyg_tools.execution.training">
+<span class="sig-prename descclassname"><span class="pre">selfdist_toolkit.pyg_tools.execution.</span></span><span class="sig-name descname"><span class="pre">training</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">model</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Module</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">trainings_data</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">DataLoader</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">Data</span><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">device</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">device</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">optimizer</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Optimizer</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">loss_criterion</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">batch_size</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">verbose</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">ndarray</span><span class="p"><span class="pre">[</span></span><span class="pre">float</span><span class="p"><span class="pre">]</span></span></span></span><a class="headerlink" href="#selfdist_toolkit.pyg_tools.execution.training" title="Permalink to this definition"></a></dt>
+<dd><p>Function used for training the model on the supplied training data.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>verbose</strong> (<em>bool</em><em>, </em><em>optional</em>) – Decides whether tqdm progress bar is shown or not. Default: True</p></li>
+<li><p><strong>model</strong> (<em>torch.nn.Module</em>) – Model to train</p></li>
+<li><p><strong>trainings_data</strong> (<em>Union</em><em>[</em><em>torch_geometric.loader.DataLoader</em><em>,</em><em>List</em><em>[</em><em>torch_geometric.data.data.Data</em><em>]</em><em>]</em>) – Data to train the model with</p></li>
+<li><p><strong>device</strong> (<em>torch.device</em>) – Device on which the model should operate</p></li>
+<li><p><strong>optimizer</strong> (<em>torch.optim.optimizer.Optimizer</em>) – Optimizer used for training</p></li>
+<li><p><strong>loss_criterion</strong> – Loss generating class/function</p></li>
+<li><p><strong>batch_size</strong> (<em>int</em><em>, </em><em>optional</em>) – Batch size in case a list of pytorch geometric objects is supplied. Default: 1</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p><strong>mean_loss</strong> – Mean over the batch wise losses</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>np.ndarray[float]</p>
+</dd>
+</dl>
+</dd></dl>
+
+</section>
+<section id="module-selfdist_toolkit.pyg_tools.gnn_load">
+<span id="selfdist-toolkit-pyg-tools-gnn-load-module"></span><h2>selfdist_toolkit.pyg_tools.gnn_load module<a class="headerlink" href="#module-selfdist_toolkit.pyg_tools.gnn_load" title="Permalink to this heading"></a></h2>
+<dl class="py function">
+<dt class="sig sig-object py" id="selfdist_toolkit.pyg_tools.gnn_load.load_all_pyg">
+<span class="sig-prename descclassname"><span class="pre">selfdist_toolkit.pyg_tools.gnn_load.</span></span><span class="sig-name descname"><span class="pre">load_all_pyg</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">path_data</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">'data/'</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">Data</span><span class="p"><span class="pre">]</span></span></span></span><a class="headerlink" href="#selfdist_toolkit.pyg_tools.gnn_load.load_all_pyg" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="selfdist_toolkit.pyg_tools.gnn_load.load_pyg_data_aid">
+<span class="sig-prename descclassname"><span class="pre">selfdist_toolkit.pyg_tools.gnn_load.</span></span><span class="sig-name descname"><span class="pre">load_pyg_data_aid</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">aid</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">do_in_parallel</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">label_type</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">'hard'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">path_data</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">'data/'</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">Data</span><span class="p"><span class="pre">]</span></span></span></span><a class="headerlink" href="#selfdist_toolkit.pyg_tools.gnn_load.load_pyg_data_aid" title="Permalink to this definition"></a></dt>
+<dd><p>Function that loads the pytorch geometric data objects for an experiment. Loads the smiles to load and their labels
+and then calls load_pyg_data_from_smiles_list(…) from them.
+Method to make notebooks containing such functionality look cleaner.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>path_data</strong> (<em>str</em><em>, </em><em>optional</em>) – Path to data folder</p></li>
+<li><p><strong>aid</strong> (<em>int</em>) – Experiment id for which to load the pyg data</p></li>
+<li><p><strong>do_in_parallel</strong> (<em>bool</em><em>, </em><em>optional</em>) – Bool controlling if multiprocessing is to be used or not.</p></li>
+<li><p><strong>label_type</strong> (<em>str</em><em>, </em><em>optional</em>) – Label type. Either smooth (one hot encoding) or hard (single number with class value)</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p><strong>data_list</strong> – list of data gnn objects.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><em>List</em>[torch_geometric.data.data.Data]</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="selfdist_toolkit.pyg_tools.gnn_load.load_pyg_data_from_smiles">
+<span class="sig-prename descclassname"><span class="pre">selfdist_toolkit.pyg_tools.gnn_load.</span></span><span class="sig-name descname"><span class="pre">load_pyg_data_from_smiles</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">smiles</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">label</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">label_type</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">'hard'</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Data</span></span></span><a class="headerlink" href="#selfdist_toolkit.pyg_tools.gnn_load.load_pyg_data_from_smiles" title="Permalink to this definition"></a></dt>
+<dd><p>Function that encapsulates the function form pytorch_geometric called from_smiles(…) with the functionality to
+also insert the label of the graph for graph wise prediction.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>label_type</strong> (<em>str</em><em>, </em><em>optional</em>) – Label type. Either smooth (one hot encoding) or hard (single number with class value)</p></li>
+<li><p><strong>smiles</strong> (<em>str</em>) – smiles string compressing the molecule structure</p></li>
+<li><p><strong>label</strong> (<em>Union</em><em>[</em><em>float</em><em>, </em><em>int</em><em>]</em>) – label of the molecule.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p><strong>data</strong> – pytorch geometric data object containing the molecule graph and data in general</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>torch_geometric.data.data.Data</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="selfdist_toolkit.pyg_tools.gnn_load.load_pyg_data_from_smiles_list">
+<span class="sig-prename descclassname"><span class="pre">selfdist_toolkit.pyg_tools.gnn_load.</span></span><span class="sig-name descname"><span class="pre">load_pyg_data_from_smiles_list</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">smiles_list</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">label_list</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">int</span><span class="p"><span class="pre">]</span></span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">float</span><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">do_in_parallel</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">label_type</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">'hard'</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">Data</span><span class="p"><span class="pre">]</span></span></span></span><a class="headerlink" href="#selfdist_toolkit.pyg_tools.gnn_load.load_pyg_data_from_smiles_list" title="Permalink to this definition"></a></dt>
+<dd><p>Function that is used to process a list of molecules and generate the pytorch geometric graph representation used
+for graph wise predictions.
+Utilizes multiprocessing to speed up generation of data.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>smiles_list</strong> (<em>List</em><em>[</em><em>str</em><em>]</em>) – List of smiles strings</p></li>
+<li><p><strong>label_list</strong> (<em>Union</em><em>[</em><em>List</em><em>[</em><em>int</em><em>]</em><em>, </em><em>List</em><em>[</em><em>float</em><em>]</em><em>]</em>) – list of labels the graph data should receive</p></li>
+<li><p><strong>do_in_parallel</strong> (<em>bool</em><em>, </em><em>optional</em>) – Bool controlling if multiprocessing is to be used or not.</p></li>
+<li><p><strong>label_type</strong> (<em>str</em><em>, </em><em>optional</em>) – Label type. Either smooth (one hot encoding) or hard (single number with class value)</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p><strong>data_list</strong> – list of data gnn objects.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><em>List</em>[torch_geometric.data.data.Data]</p>
+</dd>
+</dl>
+</dd></dl>
+
+</section>
+<section id="module-selfdist_toolkit.pyg_tools.sd_utils">
+<span id="selfdist-toolkit-pyg-tools-sd-utils-module"></span><h2>selfdist_toolkit.pyg_tools.sd_utils module<a class="headerlink" href="#module-selfdist_toolkit.pyg_tools.sd_utils" title="Permalink to this heading"></a></h2>
+<dl class="py function">
+<dt class="sig sig-object py" id="selfdist_toolkit.pyg_tools.sd_utils.generate_gnn_sd_data">
+<span class="sig-prename descclassname"><span class="pre">selfdist_toolkit.pyg_tools.sd_utils.</span></span><span class="sig-name descname"><span class="pre">generate_gnn_sd_data</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">aid</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">exclude_smiles</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">ndarray</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">[]</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">path_data</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">'data/'</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">Data</span><span class="p"><span class="pre">]</span></span></span></span><a class="headerlink" href="#selfdist_toolkit.pyg_tools.sd_utils.generate_gnn_sd_data" title="Permalink to this definition"></a></dt>
+<dd><p>Function that loads all molecule graphs that are not in an experiment and can thus be used for self distillation.
+Caution: returns a large number of molecules. All Data objects have a dummy label set to 2. to make a Data Loader
+work properly (signal it that this is a case of graph wise predictions).
+Function based on other function: selfdist_toolkit.data_tools.sd_data_utils.generate_self_distillation_elements(…)</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>aid</strong> (<em>int</em>) – Experiment id</p></li>
+<li><p><strong>exclude_smiles</strong> (<em>Union</em><em>[</em><em>List</em><em>[</em><em>str</em><em>]</em><em>, </em><em>np.ndarray</em><em>[</em><em>str</em><em>]</em><em>]</em><em>, </em><em>optional</em>) – List or array of smiles to exclude besides the molecule stored in the experiment</p></li>
+<li><p><strong>path_data</strong> (<em>str</em><em>, </em><em>optional</em>) – Path to data folder</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p><strong>data_list</strong> – List of gnn data objects representing molecules</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><em>List</em>[torch_geometric.data.data.Data]</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="selfdist_toolkit.pyg_tools.sd_utils.self_distillation_procedure_1dim">
+<span class="sig-prename descclassname"><span class="pre">selfdist_toolkit.pyg_tools.sd_utils.</span></span><span class="sig-name descname"><span class="pre">self_distillation_procedure_1dim</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">model</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Module</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">self_distillation_data</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">Data</span><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">number_to_pick</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">device</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">device</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">correct_label</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">batch_size</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">1</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Tuple</span><span class="p"><span class="pre">[</span></span><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">Data</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">Data</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></span></span><a class="headerlink" href="#selfdist_toolkit.pyg_tools.sd_utils.self_distillation_procedure_1dim" title="Permalink to this definition"></a></dt>
+<dd><p>Function that takes model and self distillation candidates and predicts their labels. Most secure labels are picked
+and returned as torch_geometric.data.data.Data objects with the correct labels.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>batch_size</strong> (<em>int</em><em>, </em><em>optional</em>) – batch size = how many graphs to predict at once</p></li>
+<li><p><strong>model</strong> (<em>torch.nn.Module</em>) – Model which is to be used for predicting the labels of the data</p></li>
+<li><p><strong>self_distillation_data</strong> (<em>List</em><em>[</em><em>torch_geometric.data.data.Data</em><em>]</em>) – List of pytorch geometric data objects to predict - candidates for self distillation items</p></li>
+<li><p><strong>number_to_pick</strong> (<em>int</em>) – Number of most secure predictions to return</p></li>
+<li><p><strong>device</strong> (<em>torch.device</em>) – Device on which the model should work</p></li>
+<li><p><strong>correct_label</strong> (<em>bool</em><em>, </em><em>optional</em>) – Describes if a label should be put into with its value from the prediction e.g. 0.2 or if it should be corrected
+to 0. or 1.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p><ul class="simple">
+<li><p><strong>self_distillation_data_list</strong> (<em>typing.List[torch_geometric.data.data.Data]</em>) – List of self distillation items</p></li>
+<li><p><strong>remaining_candidates_list</strong> (<em>typing.List[torch_geometric.data.data.Data]</em>) – List of remaining self distillation candidate data objects</p></li>
+</ul>
+</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="selfdist_toolkit.pyg_tools.sd_utils.self_distillation_procedure_1dim_advanced">
+<span class="sig-prename descclassname"><span class="pre">selfdist_toolkit.pyg_tools.sd_utils.</span></span><span class="sig-name descname"><span class="pre">self_distillation_procedure_1dim_advanced</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">model</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Module</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">self_distillation_data</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">Data</span><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">number_to_pick</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">pos_elem_to_pick_ratio</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">device</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">device</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">correct_label</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">batch_size</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">1</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#selfdist_toolkit.pyg_tools.sd_utils.self_distillation_procedure_1dim_advanced" title="Permalink to this definition"></a></dt>
+<dd><p>Function that takes model and self distillation candidates and predicts their labels. Most secure labels are picked
+and returned as torch_geometric.data.data.Data objects with the correct labels. More advanced version, it tries
+to pick a certain percentage of positive or close to positive elements and (the rest) certain negative labels.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>batch_size</strong> (<em>int</em><em>, </em><em>optional</em>) – batch size = how many graphs to predict at once</p></li>
+<li><p><strong>model</strong> (<em>torch.nn.Module</em>) – Model which is to be used for predicting the labels of the data</p></li>
+<li><p><strong>self_distillation_data</strong> (<em>List</em><em>[</em><em>torch_geometric.data.data.Data</em><em>]</em>) – List of pytorch geometric data objects to predict - candidates for self distillation items</p></li>
+<li><p><strong>number_to_pick</strong> (<em>int</em>) – Number of most secure predictions to return</p></li>
+<li><p><strong>pos_elem_to_pick_ratio</strong> (<em>float</em>) – Percentage of positive (or potentially positive) elements to pick</p></li>
+<li><p><strong>device</strong> (<em>torch.device</em>) – Device on which the model should work</p></li>
+<li><p><strong>correct_label</strong> (<em>bool</em><em>, </em><em>optional</em>) – Describes if a label should be put into with its value from the prediction e.g. 0.2 or if it should be corrected
+to 0. or 1. IMPORTANT NOTE: does not overcorrect labels. if a ‘positive’ label is only 0.3 in value it will
+still be treated and returned as negative, so no overcorrection!</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p><ul class="simple">
+<li><p><strong>self_distillation_data_list</strong> (<em>typing.List[torch_geometric.data.data.Data]</em>) – List of self distillation items</p></li>
+<li><p><strong>remaining_candidates_list</strong> (<em>typing.List[torch_geometric.data.data.Data]</em>) – List of remaining self distillation candidate data objects</p></li>
+</ul>
+</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="selfdist_toolkit.pyg_tools.sd_utils.self_distillation_procedure_2dim">
+<span class="sig-prename descclassname"><span class="pre">selfdist_toolkit.pyg_tools.sd_utils.</span></span><span class="sig-name descname"><span class="pre">self_distillation_procedure_2dim</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">model</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Module</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">self_distillation_data</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">Data</span><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">number_to_pick</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">device</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">device</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">generation_mode</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">'actual'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">batch_size</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">1</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Tuple</span><span class="p"><span class="pre">[</span></span><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">Data</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">Data</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></span></span><a class="headerlink" href="#selfdist_toolkit.pyg_tools.sd_utils.self_distillation_procedure_2dim" title="Permalink to this definition"></a></dt>
+<dd><p>Function that takes model and self distillation candidates and predicts their labels. Most secure labels are picked
+and returned as torch_geometric.data.data.Data objects with the correct labels.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>batch_size</strong> (<em>int</em><em>, </em><em>optional</em>) – batch size = how many graphs to predict at once</p></li>
+<li><p><strong>model</strong> (<em>torch.nn.Module</em>) – Model which is to be used for predicting the labels of the data</p></li>
+<li><p><strong>self_distillation_data</strong> (<em>List</em><em>[</em><em>torch_geometric.data.data.Data</em><em>]</em>) – List of pytorch geometric data objects to predict - candidates for self distillation items</p></li>
+<li><p><strong>number_to_pick</strong> (<em>int</em>) – Number of most secure predictions to return</p></li>
+<li><p><strong>device</strong> (<em>torch.device</em>) – Device on which the model should work</p></li>
+<li><p><strong>generation_mode</strong> (<em>str</em>) – Mode of label generation. Actual = use actual prediction as label (direct output of model), corrected = use
+corrected output in the sense of using a one-hot encoding of the label output (label output=argmax)</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p><ul class="simple">
+<li><p><strong>self_distillation_data_list</strong> (<em>typing.List[torch_geometric.data.data.Data]</em>) – List of self distillation items</p></li>
+<li><p><strong>remaining_candidates_list</strong> (<em>typing.List[torch_geometric.data.data.Data]</em>) – List of remaining self distillation candidate data objects</p></li>
+</ul>
+</p>
+</dd>
+</dl>
+</dd></dl>
+
+</section>
+<section id="module-selfdist_toolkit.pyg_tools.stanford_ogb_utils">
+<span id="selfdist-toolkit-pyg-tools-stanford-ogb-utils-module"></span><h2>selfdist_toolkit.pyg_tools.stanford_ogb_utils module<a class="headerlink" href="#module-selfdist_toolkit.pyg_tools.stanford_ogb_utils" title="Permalink to this heading"></a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="selfdist_toolkit.pyg_tools.stanford_ogb_utils.AtomEncoder">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">selfdist_toolkit.pyg_tools.stanford_ogb_utils.</span></span><span class="sig-name descname"><span class="pre">AtomEncoder</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">emb_dim</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#selfdist_toolkit.pyg_tools.stanford_ogb_utils.AtomEncoder" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">Module</span></code></p>
+<p>Original source:
+<a class="reference external" href="https://github.com/snap-stanford/ogb/blob/d37cffa2e2cde531ca7b7e75800d331ed1e738a6/ogb/graphproppred/mol_encoder.py">https://github.com/snap-stanford/ogb/blob/d37cffa2e2cde531ca7b7e75800d331ed1e738a6/ogb/graphproppred/mol_encoder.py</a></p>
+<dl class="py method">
+<dt class="sig sig-object py" id="selfdist_toolkit.pyg_tools.stanford_ogb_utils.AtomEncoder.forward">
+<span class="sig-name descname"><span class="pre">forward</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">x</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#selfdist_toolkit.pyg_tools.stanford_ogb_utils.AtomEncoder.forward" title="Permalink to this definition"></a></dt>
+<dd><p>Defines the computation performed at every call.</p>
+<p>Should be overridden by all subclasses.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Although the recipe for forward pass needs to be defined within
+this function, one should call the <code class="xref py py-class docutils literal notranslate"><span class="pre">Module</span></code> instance afterwards
+instead of this since the former takes care of running the
+registered hooks while the latter silently ignores them.</p>
+</div>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="selfdist_toolkit.pyg_tools.stanford_ogb_utils.AtomEncoder.training">
+<span class="sig-name descname"><span class="pre">training</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">bool</span></em><a class="headerlink" href="#selfdist_toolkit.pyg_tools.stanford_ogb_utils.AtomEncoder.training" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="selfdist_toolkit.pyg_tools.stanford_ogb_utils.BondEncoder">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">selfdist_toolkit.pyg_tools.stanford_ogb_utils.</span></span><span class="sig-name descname"><span class="pre">BondEncoder</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">emb_dim</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#selfdist_toolkit.pyg_tools.stanford_ogb_utils.BondEncoder" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">Module</span></code></p>
+<p>Original source:
+<a class="reference external" href="https://github.com/snap-stanford/ogb/blob/d37cffa2e2cde531ca7b7e75800d331ed1e738a6/ogb/graphproppred/mol_encoder.py">https://github.com/snap-stanford/ogb/blob/d37cffa2e2cde531ca7b7e75800d331ed1e738a6/ogb/graphproppred/mol_encoder.py</a></p>
+<dl class="py method">
+<dt class="sig sig-object py" id="selfdist_toolkit.pyg_tools.stanford_ogb_utils.BondEncoder.forward">
+<span class="sig-name descname"><span class="pre">forward</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">edge_attr</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#selfdist_toolkit.pyg_tools.stanford_ogb_utils.BondEncoder.forward" title="Permalink to this definition"></a></dt>
+<dd><p>Defines the computation performed at every call.</p>
+<p>Should be overridden by all subclasses.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Although the recipe for forward pass needs to be defined within
+this function, one should call the <code class="xref py py-class docutils literal notranslate"><span class="pre">Module</span></code> instance afterwards
+instead of this since the former takes care of running the
+registered hooks while the latter silently ignores them.</p>
+</div>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="selfdist_toolkit.pyg_tools.stanford_ogb_utils.BondEncoder.training">
+<span class="sig-name descname"><span class="pre">training</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">bool</span></em><a class="headerlink" href="#selfdist_toolkit.pyg_tools.stanford_ogb_utils.BondEncoder.training" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="selfdist_toolkit.pyg_tools.stanford_ogb_utils.GINConvOGB">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">selfdist_toolkit.pyg_tools.stanford_ogb_utils.</span></span><span class="sig-name descname"><span class="pre">GINConvOGB</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">emb_dim</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#selfdist_toolkit.pyg_tools.stanford_ogb_utils.GINConvOGB" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">MessagePassing</span></code></p>
+<p>Original source: <a class="reference external" href="https://github.com/snap-stanford/ogb/blob/master/examples/graphproppred/mol/conv.py">https://github.com/snap-stanford/ogb/blob/master/examples/graphproppred/mol/conv.py</a></p>
+<dl class="py method">
+<dt class="sig sig-object py" id="selfdist_toolkit.pyg_tools.stanford_ogb_utils.GINConvOGB.forward">
+<span class="sig-name descname"><span class="pre">forward</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">x</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Tensor</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">edge_index</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Tensor</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">edge_attr</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Tensor</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Tensor</span></span></span><a class="headerlink" href="#selfdist_toolkit.pyg_tools.stanford_ogb_utils.GINConvOGB.forward" title="Permalink to this definition"></a></dt>
+<dd><p>Function that implements GIN convolution functionality with the addition of using edge attributes</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>x</strong> (<em>torch.Tensor</em>) – input node attributes/embedding</p></li>
+<li><p><strong>edge_index</strong> (<em>torch.Tensor</em>) – input edge indexes</p></li>
+<li><p><strong>edge_attr</strong> (<em>torch.Tensor</em>) – input edge attributes</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p><strong>out</strong> – result of applying GIN Convolution using edge attributes</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>torch.Tensor</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="selfdist_toolkit.pyg_tools.stanford_ogb_utils.GINConvOGB.message">
+<span class="sig-name descname"><span class="pre">message</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">x_j</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">edge_attr</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#selfdist_toolkit.pyg_tools.stanford_ogb_utils.GINConvOGB.message" title="Permalink to this definition"></a></dt>
+<dd><p>Constructs messages from node <span class="math notranslate nohighlight">\(j\)</span> to node <span class="math notranslate nohighlight">\(i\)</span>
+in analogy to <span class="math notranslate nohighlight">\(\phi_{\mathbf{\Theta}}\)</span> for each edge in
+<code class="xref py py-obj docutils literal notranslate"><span class="pre">edge_index</span></code>.
+This function can take any argument as input which was initially
+passed to <code class="xref py py-meth docutils literal notranslate"><span class="pre">propagate()</span></code>.
+Furthermore, tensors passed to <code class="xref py py-meth docutils literal notranslate"><span class="pre">propagate()</span></code> can be mapped to the
+respective nodes <span class="math notranslate nohighlight">\(i\)</span> and <span class="math notranslate nohighlight">\(j\)</span> by appending <code class="xref py py-obj docutils literal notranslate"><span class="pre">_i</span></code> or
+<code class="xref py py-obj docutils literal notranslate"><span class="pre">_j</span></code> to the variable name, <em>.e.g.</em> <code class="xref py py-obj docutils literal notranslate"><span class="pre">x_i</span></code> and <code class="xref py py-obj docutils literal notranslate"><span class="pre">x_j</span></code>.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="selfdist_toolkit.pyg_tools.stanford_ogb_utils.GINConvOGB.update">
+<span class="sig-name descname"><span class="pre">update</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">aggr_out</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#selfdist_toolkit.pyg_tools.stanford_ogb_utils.GINConvOGB.update" title="Permalink to this definition"></a></dt>
+<dd><p>Updates node embeddings in analogy to
+<span class="math notranslate nohighlight">\(\gamma_{\mathbf{\Theta}}\)</span> for each node
+<span class="math notranslate nohighlight">\(i \in \mathcal{V}\)</span>.
+Takes in the output of aggregation as first argument and any argument
+which was initially passed to <code class="xref py py-meth docutils literal notranslate"><span class="pre">propagate()</span></code>.</p>
+</dd></dl>
+
+</dd></dl>
+
+</section>
+<section id="module-selfdist_toolkit.pyg_tools">
+<span id="module-contents"></span><h2>Module contents<a class="headerlink" href="#module-selfdist_toolkit.pyg_tools" title="Permalink to this heading"></a></h2>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="selfdist_toolkit.data_tools.html" class="btn btn-neutral float-left" title="selfdist_toolkit.data_tools package" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="selfdist_toolkit.randomforest_tools.html" class="btn btn-neutral float-right" title="selfdist_toolkit.randomforest_tools package" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2023, Johannes P. Urban, B.Sc..</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>
