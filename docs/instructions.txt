@@ -9,7 +9,10 @@ put numpydoc into extension
 also put the following
 'sphinx.ext.autodoc',
 'sphinx.ext.viewcode',
-'sphinx.ext.napoleon'
+'sphinx.ext.napoleon',
+'numpydoc'
+
+replace to sphinx_rtd_theme
 
 put:
 import os

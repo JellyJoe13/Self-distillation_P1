@@ -5,23 +5,22 @@
 
 import os
 import sys
-sys.path.insert(0, os.path.abspath('../..'))
+sys.path.insert(0, os.path.abspath('..'))
 
 # -- Project information -----------------------------------------------------
 # https://www.sphinx-doc.org/en/master/usage/configuration.html#project-information
 
-project = 'Self-distillation_P1'
-copyright = '2023, Johannes P. Urban'
-author = 'Johannes P. Urban'
+project = 'Self-distillation'
+copyright = '2023, Johannes P. Urban, B.Sc.'
+author = 'Johannes P. Urban, B.Sc.'
+release = '1.0.0'
 
 # -- General configuration ---------------------------------------------------
 # https://www.sphinx-doc.org/en/master/usage/configuration.html#general-configuration
 
 extensions = [
     'sphinx.ext.autodoc',
-    'sphinx.ext.viewcode',
-    'sphinx.ext.napoleon',
-    'numpydoc'
+    'sphinx.ext.napoleon'
 ]
 
 templates_path = ['_templates']
