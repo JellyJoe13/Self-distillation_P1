@@ -1,0 +1,17 @@
+# This CITATION.cff file was generated with cffinit.
+# Visit https://bit.ly/cffinit to generate yours today!
+
+cff-version: 1.2.0
+title: >-
+  Self Distillation on Graph Neural Networks for Molecule
+  Property Prediction
+message: >-
+  If you use the results shown in the report or reuse part
+  of the code, please cite it as below.
+authors:
+  - given-names: Johannes Pascal
+    family-names: Urban
+repository-code: 'https://github.com/JellyJoe13/Self-distillation_P1'
+license: MIT
+version: 1.0.0
+date-released: '2023-07-01'
