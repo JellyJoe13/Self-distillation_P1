@@ -35,6 +35,10 @@ The report and hence the results of this project can be read in the pdf report
   [pytorch documentation](https://pytorch.org/get-started/locally/) and [pytorch geometric documentation](https://pytorch-geometric.readthedocs.io/en/latest/install/installation.html)
 - P1_Urban_Self-Distillation-on-Graph-Neural-Networks-for-Molecule-Prediction.pdf - report of this project
 - requirements(2).txt - list of python libraries used and their version - not usable for environment reproduction
+- notebooks at top level - these are the notebooks for development, Random Forest experiments and the first GNN tests.
+Because of file structure it is kept at this level because else path references need to be changed which requires
+testing of the changed paths and hence recomputation of results which cascades quickly because the main teacher model
+if affected.
 
 ## Data fetching
 Use the ucloud repository via [link](https://ucloud.univie.ac.at/index.php/s/XcnZ8q13sqQgraT) to download either whole 
