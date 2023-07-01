@@ -8,6 +8,9 @@ import typing
 
 
 class AccuracyStorage:
+    """
+    Accuracy holding class, works similarly to dictionary. Can be used to retrieve pandas dataframe or dict.
+    """
     def __init__(
             self,
             accuracy: float,
@@ -26,6 +29,14 @@ class AccuracyStorage:
         self.mcc = mcc
 
     def to_dict(self) -> typing.Dict[str, float]:
+        """
+        Returns stored values as dict.
+
+        Returns
+        -------
+        typing.Dict[str, float]
+            Dict containing stored values
+        """
         return {
             "accuracy_score": self.accuracy_score,
             "balanced_accuracy": self.balanced_accuracy,
@@ -36,6 +47,19 @@ class AccuracyStorage:
         }
 
     def to_df(self, index):
+        """
+        Returns stored values as pandas dataframe with row index set to parameter input.
+
+        Parameters
+        ----------
+        index : int
+            Future row index of dataframe
+
+        Returns
+        -------
+        pd.DataFrame
+            Dataframe containing stored values
+        """
         return pd.DataFrame(self.to_dict(), index=[index])
 
 
@@ -43,6 +67,22 @@ def helper_pyg_to_numpy_label(
         data_loader: torch_geometric.loader.DataLoader,
         correct_label: bool = False
 ) -> np.ndarray[int]:
+    """
+    Helper function to extract labels from DataLoader object, currently always corrects labels to hard labels because
+    mainly used for true label fetching which is for some accuracy measurements important to be integer.
+
+    Parameters
+    ----------
+    data_loader : torch_geometric.loader.DataLoader
+        Data loader from which to extract labels
+    correct_label : bool, optional
+        Determine whether labels are to be corrected using 0.5 decision threshold or not. Default False
+
+    Returns
+    -------
+    np.ndarray[int]
+        List of labels
+    """
 
     # decide if the labels need to be converted to hard labels
     if correct_label:
@@ -59,6 +99,22 @@ def calculate_accuracies_1d(
         y_true: np.ndarray,
         y_pred: np.ndarray
 ) -> AccuracyStorage:
+    """
+    Calculates the following accuracy metrics and returns them in an AccuracyStorage class object: accuracy, balanced
+    accuracy, roc_auc, precision, recall, mcc.
+
+    Parameters
+    ----------
+    y_true : np.ndarray
+        True labels
+    y_pred : np.ndarray
+        predicted labels
+
+    Returns
+    -------
+    AccuracyStorage
+        Element holding metric scores similarly to dictionary.
+    """
 
     # fetch the accuracy scores
     accuracy = accuracy_score(
