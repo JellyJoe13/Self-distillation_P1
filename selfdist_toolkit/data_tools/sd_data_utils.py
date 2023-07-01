@@ -86,6 +86,27 @@ def merge_data_self_dist_data(
         label: np.ndarray,
         sd_label: np.ndarray
 ) -> typing.Tuple[np.ndarray, np.ndarray]:
+    """
+    Merges two data sets into one. Both data and labels respectively.
+
+    Parameters
+    ----------
+    data : np.ndarray
+        Data list one to merge
+    sd_data : np.ndarray
+        Data list two to merge
+    label : np.ndarray
+        Label list one to merge
+    sd_label : np.ndarray
+        Label list two to merge
+
+    Returns
+    -------
+    new_data : np.ndarray
+        Merged data block
+    new_labels : np.ndarray
+        Merged label block
+    """
 
     # fuze data
     new_data = np.vstack([data, sd_data])

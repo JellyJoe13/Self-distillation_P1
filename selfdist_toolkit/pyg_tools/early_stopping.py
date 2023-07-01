@@ -7,6 +7,9 @@ from selfdist_toolkit.pyg_tools.accuracy import AccuracyStorage
 
 
 class EarlyStopBasic:
+    """
+    Class to store metrics for when to stop and implement logic when to actually stop the training.
+    """
     def __init__(
             self,
             min_improvement: float,
@@ -23,6 +26,21 @@ class EarlyStopBasic:
             self,
             accuracy_storage: AccuracyStorage
     ) -> bool:
+        """
+        Supply current metric scores and determine whether to stop or not. Sees if it is a new maximum score:
+         - if it is then set the counter to 0
+         - if not then increase the counter by 1 and if this is larger than the set parameter then indicate to stop.
+
+        Parameters
+        ----------
+        accuracy_storage : AccuracyStorage
+            Class storing the recoded metrics of the last epoch
+
+        Returns
+        -------
+        bool
+            True if the training should be stopped
+        """
 
         # check if selected measure is in the accuracy storage
         if self.measurement not in accuracy_storage.to_dict():

@@ -18,7 +18,7 @@ Supervisor: Ass.-Prof. Dipl.-Inf. Dr. Nils Morten Kriege
 Co-supervisor: Steffen Hirte, B.Sc. M.Sc. M.Sc.
 
 The report and hence the results of this project can be read in the pdf report 
-'P1_Urban_Self-Distillation-on-Graph-Neural-Networks-for-Molecule-Prediction.pdf'
+'P1_Urban_Self-Distillation-on-Graph-Neural-Networks-for-Molecule-Property-Prediction.pdf'
 
 ## Content description
 - data (see more in data section)
@@ -33,7 +33,7 @@ The report and hence the results of this project can be read in the pdf report
 - environment(2).yml - information file on environment setup - not directly usable to reproduce to environment because of pytorch setup 
 - installation-procedures.txt - concise textual guide to setup environment on test machine - alter for own machine using 
   [pytorch documentation](https://pytorch.org/get-started/locally/) and [pytorch geometric documentation](https://pytorch-geometric.readthedocs.io/en/latest/install/installation.html)
-- P1_Urban_Self-Distillation-on-Graph-Neural-Networks-for-Molecule-Prediction.pdf - report of this project
+- P1_Urban_Self-Distillation-on-Graph-Neural-Networks-for-Molecule-Property-Prediction.pdf - report of this project
 - requirements(2).txt - list of python libraries used and their version - not usable for environment reproduction
 - notebooks at top level - these are the notebooks for development, Random Forest experiments and the first GNN tests.
 Because of file structure it is kept at this level because else path references need to be changed which requires

@@ -10,6 +10,19 @@ from selfdist_toolkit.data_tools.loading import load_pure_data
 def load_all_pyg(
         path_data: str = "data/"
 ) -> typing.List[torch_geometric.data.data.Data]:
+    """
+    Function that loads a list of all pytorch geometric data elements e.g. all molecules.
+
+    Parameters
+    ----------
+    path_data : str, optional
+        Path to data folder
+
+    Returns
+    -------
+    typing.List[torch_geometric.data.data.Data]
+        List of all molecules as graph objects
+    """
 
     # load all smiles strings
     all_smiles = np.load(path_data + "smiles.npy", allow_pickle=True)[:, 1].astype(str)

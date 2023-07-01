@@ -6,8 +6,6 @@ from selfdist_toolkit.pyg_tools.stanford_ogb_utils import AtomEncoder, BondEncod
 import torch.nn.functional as F
 
 
-# todo: stochastic depth?
-# todo: data augmentation? probably not at this point, right?
 class GIN_basic(torch.nn.Module):
     """
     Class implementing a GIN Convolution graph wise prediction neural network. The implementation and design of this
