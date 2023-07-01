@@ -18,7 +18,7 @@ Supervisor: Ass.-Prof. Dipl.-Inf. Dr. Nils Morten Kriege
 Co-supervisor: Steffen Hirte, B.Sc. M.Sc. M.Sc.
 
 The report and hence the results of this project can be read in the pdf report 
-'P1_Urban_Self-Distillation-on-Graph-Neural-Networks-for-Molecule-Prediction.pdf'
+'P1_Urban_Self-Distillation-on-Graph-Neural-Networks-for-Molecule-Property-Prediction.pdf'
 
 ## Content description
 - data (see more in data section)
