@@ -133,27 +133,81 @@ Function takes input data in form of graphs and generates predictions for them.<
 <dt class="sig sig-object py" id="selfdist_toolkit.pyg_tools.accuracy.AccuracyStorage">
 <em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">selfdist_toolkit.pyg_tools.accuracy.</span></span><span class="sig-name descname"><span class="pre">AccuracyStorage</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">accuracy</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">balanced_accuracy</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">roc_score</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">precision</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">recall</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">mcc</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">0</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#selfdist_toolkit.pyg_tools.accuracy.AccuracyStorage" title="Permalink to this definition"></a></dt>
 <dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>Accuracy holding class, works similarly to dictionary. Can be used to retrieve pandas dataframe or dict.</p>
 <dl class="py method">
 <dt class="sig sig-object py" id="selfdist_toolkit.pyg_tools.accuracy.AccuracyStorage.to_df">
 <span class="sig-name descname"><span class="pre">to_df</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">index</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#selfdist_toolkit.pyg_tools.accuracy.AccuracyStorage.to_df" title="Permalink to this definition"></a></dt>
-<dd></dd></dl>
+<dd><p>Returns stored values as pandas dataframe with row index set to parameter input.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>index</strong> (<em>int</em>) – Future row index of dataframe</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Dataframe containing stored values</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>pd.DataFrame</p>
+</dd>
+</dl>
+</dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="selfdist_toolkit.pyg_tools.accuracy.AccuracyStorage.to_dict">
 <span class="sig-name descname"><span class="pre">to_dict</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Dict</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">float</span><span class="p"><span class="pre">]</span></span></span></span><a class="headerlink" href="#selfdist_toolkit.pyg_tools.accuracy.AccuracyStorage.to_dict" title="Permalink to this definition"></a></dt>
-<dd></dd></dl>
+<dd><p>Returns stored values as dict.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Dict containing stored values</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p><em>Dict</em>[str, float]</p>
+</dd>
+</dl>
+</dd></dl>
 
 </dd></dl>
 
 <dl class="py function">
 <dt class="sig sig-object py" id="selfdist_toolkit.pyg_tools.accuracy.calculate_accuracies_1d">
 <span class="sig-prename descclassname"><span class="pre">selfdist_toolkit.pyg_tools.accuracy.</span></span><span class="sig-name descname"><span class="pre">calculate_accuracies_1d</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">y_true</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">ndarray</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">y_pred</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">ndarray</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="#selfdist_toolkit.pyg_tools.accuracy.AccuracyStorage" title="selfdist_toolkit.pyg_tools.accuracy.AccuracyStorage"><span class="pre">AccuracyStorage</span></a></span></span><a class="headerlink" href="#selfdist_toolkit.pyg_tools.accuracy.calculate_accuracies_1d" title="Permalink to this definition"></a></dt>
-<dd></dd></dl>
+<dd><p>Calculates the following accuracy metrics and returns them in an AccuracyStorage class object: accuracy, balanced
+accuracy, roc_auc, precision, recall, mcc.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>y_true</strong> (<em>np.ndarray</em>) – True labels</p></li>
+<li><p><strong>y_pred</strong> (<em>np.ndarray</em>) – predicted labels</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Element holding metric scores similarly to dictionary.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference internal" href="#selfdist_toolkit.pyg_tools.accuracy.AccuracyStorage" title="selfdist_toolkit.pyg_tools.accuracy.AccuracyStorage">AccuracyStorage</a></p>
+</dd>
+</dl>
+</dd></dl>
 
 <dl class="py function">
 <dt class="sig sig-object py" id="selfdist_toolkit.pyg_tools.accuracy.helper_pyg_to_numpy_label">
 <span class="sig-prename descclassname"><span class="pre">selfdist_toolkit.pyg_tools.accuracy.</span></span><span class="sig-name descname"><span class="pre">helper_pyg_to_numpy_label</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">data_loader</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">DataLoader</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">correct_label</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">ndarray</span><span class="p"><span class="pre">[</span></span><span class="pre">int</span><span class="p"><span class="pre">]</span></span></span></span><a class="headerlink" href="#selfdist_toolkit.pyg_tools.accuracy.helper_pyg_to_numpy_label" title="Permalink to this definition"></a></dt>
-<dd></dd></dl>
+<dd><p>Helper function to extract labels from DataLoader object, currently always corrects labels to hard labels because
+mainly used for true label fetching which is for some accuracy measurements important to be integer.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>data_loader</strong> (<em>torch_geometric.loader.DataLoader</em>) – Data loader from which to extract labels</p></li>
+<li><p><strong>correct_label</strong> (<em>bool</em><em>, </em><em>optional</em>) – Determine whether labels are to be corrected using 0.5 decision threshold or not. Default False</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>List of labels</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>np.ndarray[int]</p>
+</dd>
+</dl>
+</dd></dl>
 
 </section>
 <section id="module-selfdist_toolkit.pyg_tools.early_stopping">
@@ -164,10 +218,29 @@ Function takes input data in form of graphs and generates predictions for them.<
 <dt class="sig sig-object py" id="selfdist_toolkit.pyg_tools.early_stopping.EarlyStopBasic">
 <em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">selfdist_toolkit.pyg_tools.early_stopping.</span></span><span class="sig-name descname"><span class="pre">EarlyStopBasic</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">min_improvement</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">num_epoch_wait</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">measurement</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#selfdist_toolkit.pyg_tools.early_stopping.EarlyStopBasic" title="Permalink to this definition"></a></dt>
 <dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>Class to store metrics for when to stop and implement logic when to actually stop the training.</p>
 <dl class="py method">
 <dt class="sig sig-object py" id="selfdist_toolkit.pyg_tools.early_stopping.EarlyStopBasic.new_epoch_test_stop">
 <span class="sig-name descname"><span class="pre">new_epoch_test_stop</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">accuracy_storage</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#selfdist_toolkit.pyg_tools.accuracy.AccuracyStorage" title="selfdist_toolkit.pyg_tools.accuracy.AccuracyStorage"><span class="pre">AccuracyStorage</span></a></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">bool</span></span></span><a class="headerlink" href="#selfdist_toolkit.pyg_tools.early_stopping.EarlyStopBasic.new_epoch_test_stop" title="Permalink to this definition"></a></dt>
-<dd></dd></dl>
+<dd><dl class="simple">
+<dt>Supply current metric scores and determine whether to stop or not. Sees if it is a new maximum score:</dt><dd><ul class="simple">
+<li><p>if it is then set the counter to 0</p></li>
+<li><p>if not then increase the counter by 1 and if this is larger than the set parameter then indicate to stop.</p></li>
+</ul>
+</dd>
+</dl>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>accuracy_storage</strong> (<a class="reference internal" href="#selfdist_toolkit.pyg_tools.accuracy.AccuracyStorage" title="selfdist_toolkit.pyg_tools.accuracy.AccuracyStorage"><em>AccuracyStorage</em></a>) – Class storing the recoded metrics of the last epoch</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>True if the training should be stopped</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>bool</p>
+</dd>
+</dl>
+</dd></dl>
 
 </dd></dl>
 
@@ -230,7 +303,19 @@ Function takes input data in form of graphs and generates predictions for them.<
 <dl class="py function">
 <dt class="sig sig-object py" id="selfdist_toolkit.pyg_tools.gnn_load.load_all_pyg">
 <span class="sig-prename descclassname"><span class="pre">selfdist_toolkit.pyg_tools.gnn_load.</span></span><span class="sig-name descname"><span class="pre">load_all_pyg</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">path_data</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">'data/'</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">Data</span><span class="p"><span class="pre">]</span></span></span></span><a class="headerlink" href="#selfdist_toolkit.pyg_tools.gnn_load.load_all_pyg" title="Permalink to this definition"></a></dt>
-<dd></dd></dl>
+<dd><p>Function that loads a list of all pytorch geometric data elements e.g. all molecules.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>path_data</strong> (<em>str</em><em>, </em><em>optional</em>) – Path to data folder</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>List of all molecules as graph objects</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><em>List</em>[torch_geometric.data.data.Data]</p>
+</dd>
+</dl>
+</dd></dl>
 
 <dl class="py function">
 <dt class="sig sig-object py" id="selfdist_toolkit.pyg_tools.gnn_load.load_pyg_data_aid">
